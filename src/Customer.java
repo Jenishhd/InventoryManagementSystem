@@ -25,8 +25,8 @@ public class Customer
 	public Customer()
 	{
 		firstName = "";
-		lastName = ""
-		salesTaxRate = .8
+		lastName = "";
+		salesTaxRate = .8;
 	}
 
 	/**
