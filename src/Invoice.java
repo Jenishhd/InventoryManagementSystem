@@ -34,6 +34,11 @@ public class Invoice
 	*/
 	private Customer debtor;
 
+	/**
+	* Flags if late charge has been applied
+	*/
+	private boolean hasCharged;
+
 	/*
 	 * Default Constructor
 	 */
@@ -48,6 +53,7 @@ public class Invoice
 							   					Calendar.getInstance().get(Calendar.MINUTE),
 							   					Calendar.getInstance().get(Calendar.SECOND)).build();
 
+		hasCharged = false;
 		isOpen = true;
 		isDelivered = false;
 		totalCost = 0;
@@ -79,6 +85,7 @@ public class Invoice
 								    				Calendar.getInstance().get(Calendar.SECOND)).build();
 
 		isOpen = true;
+		hasCharged = false;
 
 	}
 
@@ -169,6 +176,29 @@ public class Invoice
 			}
 		}
 	}
+
+	/**
+	* Applies late charge to remaining cost if invoice has not been paid off in 30 days
+	*/
+	public void applyCharge()
+	{
+		final int NUM_DAYS_FEE = 30;
+		final double lateFee = totalCost * .02;
+		if (isOpen)
+		{
+			if (!hasCharged)
+			{
+				if (daysBetween(dateCreated.getTime(), Calendar.getInstance().getTime()) > NUM_DAYS_FEE)
+				{
+					remainingCost += lateFee;
+					hasCharged = true;
+				}
+			}
+		}
+
+	}
+
+
 
 	/**
 	* Helper function that calculates days between 2 dates.
