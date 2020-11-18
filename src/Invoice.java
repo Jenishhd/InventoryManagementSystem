@@ -139,4 +139,45 @@ public class Invoice
 	{
 		return debtor;
 	}
+
+	/**
+	* Deduct money from remaining cost, if paid full in less than 10 days, customer gets 10% discount
+	*
+	* @param paymentAmount  Amount to be paid on invoice
+	*/
+	public void makePayment(double paymentAmount)
+	{
+		final int NUM_DAYS_DISCOUNT = 10;
+		double lowerDiscountThresh = totalCost * .1;
+
+		if (daysBetween(dateCreated.getTime(), Calendar.getInstance().getTime()) < NUM_DAYS_DISCOUNT)
+		{
+			remainingCost -= paymentAmount;
+			if (remainingCost <= lowerDiscountThresh)
+			{
+				remainingCost = 0;
+				isOpen = false;
+			}
+		}
+		else
+		{
+			remainingCost -= paymentAmount;
+			if (remainingCost < 0)
+			{
+				remainingCost = 0;
+				isOpen = false;
+			}
+		}
+	}
+
+	/**
+	* Helper function that calculates days between 2 dates.
+	*
+	* @param d1 Earlier date
+	* @param d2 Later date
+	*/
+	private int daysBetween(Date d1, Date d2)
+	{
+             return (int)( (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
+     }
 }
