@@ -1,5 +1,7 @@
 /**
  * Class for containing the information of a product
+ *
+ * @author Blake Del Rey
  */
 public class Customer
 {
