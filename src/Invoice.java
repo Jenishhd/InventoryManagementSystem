@@ -81,4 +81,62 @@ public class Invoice
 		isOpen = true;
 
 	}
+
+	/**
+	* Returns date/time invoice was created
+	*
+	* @return Object holding date and time of creation of invoice
+	*/
+	public Calendar getDateCreated()
+	{
+		return dateCreated;
+	}
+
+	/**
+	* Returns whether invoice invoice is still open or not
+	*
+	* @return isOpen member
+	*/
+	public boolean isOpen()
+	{
+		return isOpen;
+	}
+
+	/**
+	* Returns whether invoice items were delivered
+	*
+	* @return isDelivered member
+	*/
+	public boolean isDelivered()
+	{
+		return isDelivered;
+	}
+
+	/**
+	* Returns total cost of invoice
+	*
+	* @return totalCost member
+	*/
+	public double getTotalCost()
+	{
+		return totalCost;
+	}
+
+	/**
+	* Returns remaining Cost on invoice to be paid by debtor
+	*
+	* @return remainingCost member
+	*/
+	public double getRemainingCost()
+	{
+		return remainingCost;
+	}
+
+	/**
+	* Customer who owes/owed money on the invoice
+	*/
+	public Customer getDebtor()
+	{
+		return debtor;
+	}
 }
