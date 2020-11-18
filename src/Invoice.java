@@ -41,12 +41,12 @@ public class Invoice
 	{
 		//Sets date of invoice creation to current day
 		dateCreated = new Calendar.Builder().setCalendarType("gregorian")
-				    .setDate(Calendar.getInstance().get(Calendar.YEAR),
-						   Calendar.getInstance().get(Calendar.MONTH),
-						   Calendar.getInstance().get(Calendar.DAY_OF_MONTH))
-				    .setTimeOfDay(Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
-							   Calendar.getInstance().get(Calendar.MINUTE),
-							   Calendar.getInstance().get(Calendar.SECOND)).build();
+				    					 .setDate(Calendar.getInstance().get(Calendar.YEAR),
+						   					Calendar.getInstance().get(Calendar.MONTH),
+						   					Calendar.getInstance().get(Calendar.DAY_OF_MONTH))
+				    					 .setTimeOfDay(Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
+							   					Calendar.getInstance().get(Calendar.MINUTE),
+							   					Calendar.getInstance().get(Calendar.SECOND)).build();
 
 		isOpen = true;
 		isDelivered = false;
@@ -71,12 +71,12 @@ public class Invoice
 
 		//Sets date of invoice creation to current day
 		dateCreated = new Calendar.Builder().setCalendarType("gregorian")
-						.setDate(Calendar.getInstance().get(Calendar.YEAR),
-							    Calendar.getInstance().get(Calendar.MONTH),
-							    Calendar.getInstance().get(Calendar.DAY_OF_MONTH))
-						.setTimeOfDay(Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
-								    Calendar.getInstance().get(Calendar.MINUTE),
-								    Calendar.getInstance().get(Calendar.SECOND)).build();
+							    		 .setDate(Calendar.getInstance().get(Calendar.YEAR),
+							    				Calendar.getInstance().get(Calendar.MONTH),
+							    				Calendar.getInstance().get(Calendar.DAY_OF_MONTH))
+									 .setTimeOfDay(Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
+								    				Calendar.getInstance().get(Calendar.MINUTE),
+								    				Calendar.getInstance().get(Calendar.SECOND)).build();
 
 		isOpen = true;
 
