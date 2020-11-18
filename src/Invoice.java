@@ -39,6 +39,11 @@ public class Invoice
 	*/
 	private boolean hasCharged;
 
+	/**
+	* Map of products and quantities in invoice purchase
+	*/
+	private Map<Product, Integer> purchases;
+
 	/*
 	 * Default Constructor
 	 */
@@ -59,17 +64,16 @@ public class Invoice
 		totalCost = 0;
 		remainingCost = 0;
 		debtor = new Customer();
+		purchases = new HashMap<Product, Integer>();
 	}
 
 	/**
-	* Specific Constructor - Only specifies totalcost, debtor, and isdelivered because all
+	* Specific Constructor - Only specifies debtor and isdelivered because all
 	*					other data members should have default initial values
 	*/
-	public Invoice(double newTotalCost, Customer newDebtor, boolean newDelivered)
+	public Invoice(Customer newDebtor, boolean newDelivered)
 	{
 		//Set all specified values
-		totalCost = newTotalCost;
-		remainingCost = newTotalCost;
 		debtor = newDebtor;
 		isDelivered = newDelivered;
 
@@ -86,6 +90,9 @@ public class Invoice
 
 		isOpen = true;
 		hasCharged = false;
+		purchases = new HashMap<Product, Integer>();
+		totalCost = 0;
+		remainingCost = 0;
 
 	}
 
@@ -195,7 +202,24 @@ public class Invoice
 				}
 			}
 		}
+	}
 
+	/**
+	* Add product to invoice
+	*
+	* @param product Product to be added to invoice
+	* @param quantity Quantity of product in invoice
+	*/
+	public void addProduct(Product product, int quantity)
+	{
+		if (purchases.containsKey(product))
+		{
+			purchases.put(product, purchases.get(product) + quantity);
+		}
+		else
+		{
+			purchases.put(product, quantity);
+		}
 	}
 
 
