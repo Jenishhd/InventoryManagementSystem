@@ -1,4 +1,4 @@
-/*
+/**
  * Class for containing the information of a product
  */
 public class Customer
@@ -19,14 +19,28 @@ public class Customer
 	*/
 	private double salesTaxRate;
 
-	/*
-	 * Constructor
+	/**
+	 * Default Constructor that initializes names to empty and taxRate to .8
 	 */
 	public Customer()
 	{
 		firstName = "";
 		lastName = "";
 		salesTaxRate = .8;
+	}
+
+	/**
+	* Constructor with specified values for all data members
+	*
+	* @param newFirstName Initial first name for customer
+	* @param newLastName Initial last name for customer
+	* @param newSalesTaxRate Initial sales tax rate for customer
+	*/
+	public Customer(String newFirstName, String newLastName, double newSalesTaxRate)
+	{
+		firstName = newFirstName;
+		lastName = newLastName;
+		salesTaxRate = newSalesTaxRate;
 	}
 
 	/**
