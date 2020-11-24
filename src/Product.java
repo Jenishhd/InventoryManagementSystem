@@ -17,7 +17,27 @@ public class Product
 	* Cost to attain 1 unit of this item before retail sale
 	*/
 	private double costPrice;
-
+	
+	/**
+	 * Number of unsold units currently in existance
+	 */
+	private int quantity;
+	
+	/**
+	 * Number of sold units 
+	 */
+	private int quantitySold;
+	
+	/**
+	 * The current earnings from sales compared to the total cost of production
+	 */
+	private double totalProfit;
+	
+	/**
+	 * The current profits compared to the total cost of production as a percentile-value
+	 */
+	private double totalProfitPercent;
+	
 
 	/*
 	 * Default Constructor
@@ -61,6 +81,67 @@ public class Product
 	public double getSellPrice()
 	{
 		return sellPrice;
+	}
+	
+	/**
+	 * Returns the total cost of production for the product
+	 * @return total cost of production
+	 */
+	public double getCostPrice()
+	{
+		return costPrice;
+	}
+	
+	/**
+	 * Returns the current quantity of the product available for sale
+	 * @return quantity of the product
+	 */
+	public int getQuantity()
+	{
+		return quantity;
+	}
+	
+	/**
+	 * Returns the total number of units sold of this product
+	 * @return number of units sold
+	 */
+	public int getQuantitySold()
+	{
+		return quantitySold;
+	}
+	
+	/**
+	 * Returns the total money earned from sale of this product
+	 * @return total money earned from sales
+	 */
+	public double getTotalSales()
+	{
+		return (quantitySold * sellPrice);
+	}
+	
+	/**
+	 * returns the total money that was spent producing this product
+	 * @return money spent in production
+	 */
+	public double getTotalCost()
+	{
+		return (quantity * costPrice);
+	}
+	
+	/**
+	 * Calculates the total profit from this product's production and sale, and assigns it to the totalProfit variable
+	 */
+	public void getTotalProfit()
+	{
+		totalProfit = (getTotalSales() - getTotalCost());
+	}
+	
+	/**
+	 * Calculates how the profit of the product has surpassed the total production cost as a percent-value. This value is assigned to the totalProfitPercent variable
+	 */
+	public void calcTotalProfitPercent()
+	{
+		totalProfitPercent = (totalProfit / getTotalCost());
 	}
 
 
