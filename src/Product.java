@@ -52,7 +52,7 @@ public class Product
 	/**
 	* Specific Constructor with values for all data members
 	*
-	* @param newName Initail name of item
+	* @param newName Initial name of item
 	* @param newSell Initial sell  price of item
 	* @param newCost Initial costprice of item
 	*/
