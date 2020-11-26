@@ -72,6 +72,15 @@ public class Product
 	{
 		return name;
 	}
+	
+	/**
+	 * Changes the name of item
+	 * @param i new name of item
+	 */
+	public void setName(String i)
+	{
+		name = i;
+	}
 
 	/**
 	* Returns sell  price of item
@@ -84,12 +93,26 @@ public class Product
 	}
 	
 	/**
+	 * changes the sell price of item
+	 * @param d new sell price
+	 */
+	public void setSellPrice(double d)
+	{
+		sellPrice = d;
+	}
+	
+	/**
 	 * Returns the total cost of production for the product
 	 * @return total cost of production
 	 */
 	public double getCostPrice()
 	{
 		return costPrice;
+	}
+	
+	public void setCostPrice(double d)
+	{
+		costPrice = d;
 	}
 	
 	/**
