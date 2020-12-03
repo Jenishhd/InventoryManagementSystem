@@ -47,6 +47,7 @@ public class MainMenuBoundary
 			return true;
 		//Invoices
 		case "3":
+			printInvoiceMenu();
 			return true;
 		//Warehouses
 		case "4":
@@ -227,5 +228,51 @@ public class MainMenuBoundary
 	 * Displays all current customers in the CustomerMenuBoundary database
 	 */
 	private void displayCustomers() {};
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// Invoice Menu Boundary
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public List<Invoice> invoices = new ArrayList<Invoice>();	
+	
+	public void printInvoiceMenu()
+	{
+		while (printInvoiceMenuChoices()) {};
+	}
+	
+	/*
+	 * Method to print all menu choices and act upon the input of the user
+	 */
+	private boolean printInvoiceMenuChoices()
+	{
+		System.out.println("\nPlease make a selection:");
+		System.out.println("1) Add Invoice\n2) Show all invoices\n3) Exit");
+		//Switch for menu selection. All cases that return true will reprint the menu choices. All cases that return false will not
+		switch(input.nextLine())
+		{
+		//Add customer
+		case "1":
+			addInvoice();
+			return true;
+		//Show all customers
+		case "2":
+			displayInvoices();
+			return true;
+		//Exit
+		case "3":
+			return false;
+		default:
+			System.out.println("Invalid selection. Please try again.");
+			return true;
+		}
+	}
+	
+	/*
+	 * Adds a new customer to the CustomerMenuBoundary database
+	 */
+	private void addInvoice() {};
+	/*
+	 * Removes an existing customer from the CustomerMenuBoundary database. Checks if the customer exists
+	 */
+	private void displayInvoices() {};
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
