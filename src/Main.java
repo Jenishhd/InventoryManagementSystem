@@ -4,6 +4,7 @@ public class Main
      {
     	 MainMenuBoundary menu = new MainMenuBoundary();
     	 menu.printMainMenu();
+    	 menu.addCustomer();
     	 return;
      }
 }

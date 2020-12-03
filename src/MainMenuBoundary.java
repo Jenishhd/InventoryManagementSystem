@@ -179,7 +179,9 @@ public class MainMenuBoundary
 	
 	// Customer Menu Boundary
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public List<Customer> customers = new ArrayList<Customer>();	
+	public List<Customer> customers = new ArrayList<Customer>();
+	CreateCustomerBoundary ccb = new CreateCustomerBoundary();
+	RemoveCustomerBoundary rcb = new RemoveCustomerBoundary();
 	
 	public void printCustomerMenu()
 	{
@@ -198,7 +200,7 @@ public class MainMenuBoundary
 		{
 		//Add customer
 		case "1":
-			///Removes a new customer to the customerMenuBoundary database
+			///Adds a new customer to the customerMenuBoundary database
 			addCustomer();
 			return true;
 		//Remove customer
@@ -223,15 +225,24 @@ public class MainMenuBoundary
 	/*
 	 * Adds a new customer to the CustomerMenuBoundary database
 	 */
-	private void addCustomer() {};
+	public void addCustomer() {
+		ccb.createCustomer(customers);
+	};
 	/*
 	 * Removes an existing customer from the CustomerMenuBoundary database. Checks if the customer exists
 	 */
-	private void removeCustomer() {};
+	public void removeCustomer() {
+		rcb.removeCustomer(customers);
+	};
 	/*
 	 * Displays all current customers in the CustomerMenuBoundary database
 	 */
-	private void displayCustomers() {};
+	public void displayCustomers() {
+		System.out.printf("%-22s%-22s%-22s\n","First Name","Last Name","SalesTax");
+		for(int i = 0; i < customers.size(); i++) {
+			System.out.printf("%-22s%-22s%-22s\n",customers.get(i).getFirstName(),customers.get(i).getLastName(),String.valueOf(customers.get(i).getSalesTaxRate()));
+		}
+	};
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	// Invoice Menu Boundary
