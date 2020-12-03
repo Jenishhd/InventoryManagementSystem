@@ -51,6 +51,7 @@ public class MainMenuBoundary
 			return true;
 		//Warehouses
 		case "4":
+			printWarehouseMenu();
 			return true;
 		//Exit
 		case "5":
@@ -197,14 +198,17 @@ public class MainMenuBoundary
 		{
 		//Add customer
 		case "1":
+			///Removes a new customer to the customerMenuBoundary database
 			addCustomer();
 			return true;
 		//Remove customer
 		case "2":
+			///Removes an existing customer entirely. User gets to choose from existing customers in the customerMenuBoundary database
 			removeCustomer();
 			return true;
 		//Show all customers
 		case "3":
+			///Displays the information of all customers in the CustomerMenuChoices database
 			displayCustomers();
 			return true;
 		//Exit
@@ -233,6 +237,7 @@ public class MainMenuBoundary
 	// Invoice Menu Boundary
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public List<Invoice> invoices = new ArrayList<Invoice>();	
+	public List<SalesPerson> salesPeople = new ArrayList<SalesPerson>();	
 	
 	public void printInvoiceMenu()
 	{
@@ -245,20 +250,33 @@ public class MainMenuBoundary
 	private boolean printInvoiceMenuChoices()
 	{
 		System.out.println("\nPlease make a selection:");
-		System.out.println("1) Add Invoice\n2) Show all invoices\n3) Exit");
+		System.out.println("1) Add Invoice\n2) Show all invoices\n3) Add new salesperson\n4) Remove salesperson\n5) Show salespeople\n6) Exit");
 		//Switch for menu selection. All cases that return true will reprint the menu choices. All cases that return false will not
 		switch(input.nextLine())
 		{
 		//Add customer
 		case "1":
+			//Adds a new invoice to the invoiceMenuChoices database. Takes an existing product, customer and salesperson
 			addInvoice();
 			return true;
 		//Show all customers
 		case "2":
 			displayInvoices();
 			return true;
-		//Exit
+		//Add new Salesperson
 		case "3":
+			addSalesPerson();
+			return true;
+		//Remove existing Salesperson
+		case "4":
+			removeSalesPerson();
+			return true;
+		//Displays all salespeople
+		case "5":
+			displaySalesPeople();
+			return true;
+		//Exit
+		case "6":
 			return false;
 		default:
 			System.out.println("Invalid selection. Please try again.");
@@ -271,8 +289,97 @@ public class MainMenuBoundary
 	 */
 	private void addInvoice() {};
 	/*
-	 * Removes an existing customer from the CustomerMenuBoundary database. Checks if the customer exists
+	 * Displays the information of all invoices in the customerMenuBoundary
 	 */
 	private void displayInvoices() {};
+	/*
+	 * Adds a new salesperson to the customerMenuBoundary database
+	 */
+	private void addSalesPerson() {};
+	/*
+	 * Removes an existing salesperson from the customerMenuBoundary database
+	 */
+	private void removeSalesPerson() {};
+	/*
+	 * displays the information of all salespeople in the customerMenuBoundary database
+	 */
+	private void displaySalesPeople() {};
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// Customer Menu Boundary
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		public List<Warehouse> warehouses = new ArrayList<Warehouse>();	
+		
+		public void printWarehouseMenu()
+		{
+			while (printWarehouseMenuChoices()) {};
+		}
+		
+		/*
+		 * Method to print all menu choices and act upon the input of the user
+		 */
+		private boolean printWarehouseMenuChoices()
+		{
+			System.out.println("\nPlease make a selection:");
+			System.out.println("1) Add Warehouse\n2) Remove Warehouse\n3) Show all warehouses\n4) Add new item to warehouse\n5) Remove item from warehouse\n6) Supply item in warehouse\n7) Remove item supply in warehouse\n8) Exit");
+			//Switch for menu selection. All cases that return true will reprint the menu choices. All cases that return false will not
+			switch(input.nextLine())
+			{
+			//Add customer
+			case "1":
+				addWarehouse();
+				return true;
+			//Remove customer
+			case "2":
+				removeWarehouse();
+				return true;
+			//Show all customers
+			case "3":
+				displayWarehouses();
+				return true;
+			//Adds a new item to the warehouse. Item must already exist in ItemMenuBoundary
+			case "4":
+				///Asks user to select an item in the itemMenuBoundary to add, and the quantity
+				addWarehouseItem();
+				return true;
+			//Removes item entirely from warehouse. Item must already be contained in warehouse
+			case "5":
+				///Asks user to select an item in the warehouse to remove
+				removeWarehouseItem();
+				return true;
+			//Adds a certain amount to an item in the warehouse. Item must exist in the warehouse already
+			case "6":
+				///Asks user for number to add
+				changeWarehouseItemQuantity(/*positive int*/);
+				return true;
+			//Removes a certain amount of an item form the warehouse. Item must exist in the warehouse already, and resulting item quantity cannot be <0
+			case "7":
+				///Asks user for number to remove
+				changeWarehouseItemQuantity(/*negative int*/);
+				return true;
+			//Exit
+			case "8":
+				return false;
+			default:
+				System.out.println("Invalid selection. Please try again.");
+				return true;
+			}
+		}
+		
+		/*
+		 * Adds a new customer to the CustomerMenuBoundary database
+		 */
+		private void addWarehouse() {};
+		/*
+		 * Removes an existing customer from the CustomerMenuBoundary database. Checks if the customer exists
+		 */
+		private void removeWarehouse() {};
+		/*
+		 * Displays all current customers in the CustomerMenuBoundary database
+		 */
+		private void displayWarehouses() {};
+		private void addWarehouseItem() {};
+		private void removeWarehouseItem() {};
+		private void changeWarehouseItemQuantity(/* int i*/) {};
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
