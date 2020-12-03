@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /*
@@ -5,15 +7,13 @@ import java.util.Scanner;
  */
 public class MainMenuBoundary 
 {
+	// Main Menu Boundary
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	Scanner input = new Scanner(System.in);
 	
 	private String username = "Admin";									//Stored username variable. For now: "Admin"
 	private String password = "Admin";									//Stored password variable. For now: "Admin"
 	
-	ItemMenuBoundary bItem = new ItemMenuBoundary();					//ItemMenuBoundary instance to track all item/product operations
-	CustomerMenuBoundary bCustomer = new CustomerMenuBoundary();		//CustomerMenuBoundary instance to track all customer operations
-	InvoiceMenuBoundary bInvoice = new InvoiceMenuBoundary();			//InvoiceMenuBoundary instance to track all invoice operations
-	WarehouseMenuBoundary bWarehouse = new WarehouseMenuBoundary();		//WarehouseMenuBoundary instance to track all warehouse operations
 	
 	/*
 	 * Method to print the main selection menu
@@ -39,17 +39,18 @@ public class MainMenuBoundary
 		{
 		//Items and Products
 		case "1":
-			bItem.printItemMenu();
+			printItemMenu();
 			return true;
 		//Customers
 		case "2":
-			return false;
+			printCustomerMenu();
+			return true;
 		//Invoices
 		case "3":
-			return false;
+			return true;
 		//Warehouses
 		case "4":
-			return false;
+			return true;
 		//Exit
 		case "5":
 			return false;
@@ -80,4 +81,151 @@ public class MainMenuBoundary
 		}
 		return false;
 	}
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// ItemMenuBoundary
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public List<Product> items = new ArrayList<Product>();	
+	
+	public void printItemMenu()
+	{
+		///Repeats if printMenuChoices() returns a false value
+		while(printItemMenuChoices()) {};
+	}
+	
+	/*
+	 * Method to print all menu choices and act upon the input of the user
+	 */
+	private boolean printItemMenuChoices()
+	{
+		System.out.println("\nPlease make a selection:");
+		System.out.println("1) Add Item\n2) Remove Item\n3) Show all items\n4) Exit");
+		//Switch for menu selection. All cases that return true will reprint the menu choices. All cases that return false will not
+		switch(input.nextLine())
+		{
+		//Add item
+		case "1":
+			addItem();
+			return true;
+		//Remove item
+		case "2":
+			removeItem();
+			return true;
+		//Show all items
+		case "3":
+			displayItems();
+			return true;
+		//Exit
+		case "4":
+			return false;
+		default:
+			System.out.println("Invalid selection. Please try again.");
+			return true;
+		}
+	}
+	
+	/*
+	 * Adds a new item to the itemMenuBoundary database, consisting of an item name, cost price and sale price
+	 */
+	private void addItem()
+	{
+		//Creates temporary product value
+		Product temp = new Product();
+		
+		//Takes product name as input
+		System.out.print("Product Name: ");
+		temp.setName(input.nextLine());
+		
+		//Takes product cost price as input
+		System.out.print("Cost to produce: ");
+		temp.setCostPrice(Double.parseDouble(input.nextLine()));
+		
+		//Takes product sale price as input
+		System.out.print("Price to sell: ");
+		temp.setSellPrice(Double.parseDouble(input.nextLine()));
+		
+		//Adds the completed item to the database
+		items.add(temp);
+		System.out.println(temp.getName() + " successfully added!");
+	}
+	
+	/*
+	 * Removes and item from the itemMenuBoundary database. Checks to make sure the item is not contained in any warehouses
+	 */
+	private void removeItem() {};
+	
+	/*
+	 * Displays all current items in the itemMenuBoundary database. 
+	 */
+	private void displayItems()
+	{
+		//If there are no available items to display, print error message and return
+		if (items.size() == 0) 
+		{
+			System.out.println("There are currently no registered items. Please try again.");
+			return;
+		}
+		
+		//Print the names of all products stored in the database
+		System.out.println("Products: ");
+		for (int i = 0; i < items.size(); i++)
+		{
+			System.out.println((i + 1) + ") " + items.get(i).getName());
+		}
+	}
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// Customer Menu Boundary
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public List<Customer> customers = new ArrayList<Customer>();	
+	
+	public void printCustomerMenu()
+	{
+		while (printCustomerMenuChoices()) {};
+	}
+	
+	/*
+	 * Method to print all menu choices and act upon the input of the user
+	 */
+	private boolean printCustomerMenuChoices()
+	{
+		System.out.println("\nPlease make a selection:");
+		System.out.println("1) Add Customer\n2) Remove Customer\n3) Show all customers\n4) Exit");
+		//Switch for menu selection. All cases that return true will reprint the menu choices. All cases that return false will not
+		switch(input.nextLine())
+		{
+		//Add customer
+		case "1":
+			addCustomer();
+			return true;
+		//Remove customer
+		case "2":
+			removeCustomer();
+			return true;
+		//Show all customers
+		case "3":
+			displayCustomers();
+			return true;
+		//Exit
+		case "4":
+			return false;
+		default:
+			System.out.println("Invalid selection. Please try again.");
+			return true;
+		}
+	}
+	
+	/*
+	 * Adds a new customer to the CustomerMenuBoundary database
+	 */
+	private void addCustomer() {};
+	/*
+	 * Removes an existing customer from the CustomerMenuBoundary database. Checks if the customer exists
+	 */
+	private void removeCustomer() {};
+	/*
+	 * Displays all current customers in the CustomerMenuBoundary database
+	 */
+	private void displayCustomers() {};
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
