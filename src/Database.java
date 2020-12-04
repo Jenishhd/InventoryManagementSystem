@@ -1,5 +1,13 @@
+import java.util.*;
+
 public class Database
 {
+
+     /**
+     * Single instance of the database since there will only be one.
+     */
+     private static Database instance = null;
+
      /**
      * Maps name of warehouse to a warehouse object, holds all warehouse objects
      */
@@ -23,7 +31,7 @@ public class Database
      /**
      * Maps name of item to item object, holds all items
      */
-     private HashMap<String, Product> allProducts
+     private HashMap<String, Product> allProducts;
 
      /**
      * Default constructor
@@ -85,6 +93,15 @@ public class Database
      public HashMap<String, Product> getAllProducts()
      {
           return allProducts;
+     }
+
+     public static Database getInstance()
+     {
+          if (instance == null)
+          {
+               instance = new Database();
+          }
+          return instance;
      }
 
 }

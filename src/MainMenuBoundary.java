@@ -5,16 +5,23 @@ import java.util.Scanner;
 /*
  * Class that allows interaction between the user and the entirety of the database
  */
-public class MainMenuBoundary 
+public class MainMenuBoundary
 {
 	// Main Menu Boundary
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	Scanner input = new Scanner(System.in);
-	
-	private String username = "Admin";									//Stored username variable. For now: "Admin"
-	private String password = "Admin";									//Stored password variable. For now: "Admin"
-	
-	
+
+	private String username;								//Stored username variable. For now: "Admin"
+	private String password;								//Stored password variable. For now: "Admin"
+
+	ProductMenuBoundary productBoundary;
+
+	public MainMenuBoundary()
+	{
+		username = "Admin";
+		password = "Admin";
+		productBoundary = new ProductMenuBoundary();
+	}
 	/*
 	 * Method to print the main selection menu
 	 */
@@ -25,7 +32,7 @@ public class MainMenuBoundary
 		while (getLogin()) {};
 		while (printMenuChoices()) {}
 	}
-	
+
 	/*
 	 * Method to print all menu choices and act upon the input of the user
 	 */
@@ -33,13 +40,13 @@ public class MainMenuBoundary
 	{
 		System.out.println("\nPlease make a selection:");
 		System.out.println("1) Items and Products\n2) Customers\n3) Invoices\n4) Warehouses\n5) Exit");
-		
+
 		//Switch for menu selection. All cases that return true will reprint the menu choices. All cases that return false will not
 		switch(input.nextLine())
 		{
 		//Items and Products
 		case "1":
-			printItemMenu();
+			productBoundary.printItemMenuChoices();
 			return true;
 		//Customers
 		case "2":
@@ -61,7 +68,7 @@ public class MainMenuBoundary
 			return true;
 		}
 	}
-	
+
 	/*
 	 * Method to perform a login attempt
 	 */
@@ -70,11 +77,11 @@ public class MainMenuBoundary
 		//Takes input for the attempted username
 		System.out.print("Username: ");
 		String tempUsername = input.nextLine();
-		
+
 		//Takes input for the attempted password
 		System.out.print("Password: ");
 		String tempPassword = input.nextLine();
-		
+
 		//Checks if both the username and password match those stored in the database
 		if (!(tempUsername.equals(username) && tempPassword.equals(password)))
 		{
@@ -84,110 +91,33 @@ public class MainMenuBoundary
 		return false;
 	}
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	// ItemMenuBoundary
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public List<Product> items = new ArrayList<Product>();	
-	
-	public void printItemMenu()
-	{
-		///Repeats if printMenuChoices() returns a false value
-		while(printItemMenuChoices()) {};
-	}
-	
-	/*
-	 * Method to print all menu choices and act upon the input of the user
-	 */
-	private boolean printItemMenuChoices()
-	{
-		System.out.println("\nPlease make a selection:");
-		System.out.println("1) Add Item\n2) Remove Item\n3) Show all items\n4) Exit");
-		//Switch for menu selection. All cases that return true will reprint the menu choices. All cases that return false will not
-		switch(input.nextLine())
-		{
-		//Add item
-		case "1":
-			addItem();
-			return true;
-		//Remove item
-		case "2":
-			removeItem();
-			return true;
-		//Show all items
-		case "3":
-			displayItems();
-			return true;
-		//Exit
-		case "4":
-			return false;
-		default:
-			System.out.println("Invalid selection. Please try again.");
-			return true;
-		}
-	}
-	
-	/*
-	 * Adds a new item to the itemMenuBoundary database, consisting of an item name, cost price and sale price
-	 */
-	private void addItem()
-	{
-		//Creates temporary product value
-		Product temp = new Product();
-		
-		//Takes product name as input
-		System.out.print("Product Name: ");
-		temp.setName(input.nextLine());
-		
-		//Takes product cost price as input
-		System.out.print("Cost to produce: ");
-		temp.setCostPrice(Double.parseDouble(input.nextLine()));
-		
-		//Takes product sale price as input
-		System.out.print("Price to sell: ");
-		temp.setSellPrice(Double.parseDouble(input.nextLine()));
-		
-		//Adds the completed item to the database
-		items.add(temp);
-		System.out.println(temp.getName() + " successfully added!");
-	}
-	
-	/*
-	 * Removes and item from the itemMenuBoundary database. Checks to make sure the item is not contained in any warehouses
-	 */
-	private void removeItem() {};
-	
-	/*
-	 * Displays all current items in the itemMenuBoundary database. 
-	 */
-	private void displayItems()
-	{
-		//If there are no available items to display, print error message and return
-		if (items.size() == 0) 
-		{
-			System.out.println("There are currently no registered items. Please try again.");
-			return;
-		}
-		
-		//Print the names of all products stored in the database
-		System.out.println("Products: ");
-		for (int i = 0; i < items.size(); i++)
-		{
-			System.out.println((i + 1) + ") " + items.get(i).getName());
-		}
-	}
+	// public List<Product> items = new ArrayList<Product>();
+	//
+	// public void printItemMenu()
+	// {
+	// 	///Repeats if printMenuChoices() returns a false value
+	// 	while(printItemMenuChoices()) {};
+	// }
+
+
+
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	// Customer Menu Boundary
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public List<Customer> customers = new ArrayList<Customer>();
 	CreateCustomerBoundary ccb = new CreateCustomerBoundary();
 	RemoveCustomerBoundary rcb = new RemoveCustomerBoundary();
-	
+
 	public void printCustomerMenu()
 	{
 		while (printCustomerMenuChoices()) {};
 	}
-	
+
 	/*
 	 * Method to print all menu choices and act upon the input of the user
 	 */
@@ -221,7 +151,7 @@ public class MainMenuBoundary
 			return true;
 		}
 	}
-	
+
 	/*
 	 * Adds a new customer to the CustomerMenuBoundary database
 	 */
@@ -244,17 +174,17 @@ public class MainMenuBoundary
 		}
 	};
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	// Invoice Menu Boundary
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public List<Invoice> invoices = new ArrayList<Invoice>();	
-	public List<SalesPerson> salesPeople = new ArrayList<SalesPerson>();	
-	
+	public List<Invoice> invoices = new ArrayList<Invoice>();
+	public List<SalesPerson> salesPeople = new ArrayList<SalesPerson>();
+
 	public void printInvoiceMenu()
 	{
 		while (printInvoiceMenuChoices()) {};
 	}
-	
+
 	/*
 	 * Method to print all menu choices and act upon the input of the user
 	 */
@@ -294,7 +224,7 @@ public class MainMenuBoundary
 			return true;
 		}
 	}
-	
+
 	/*
 	 * Adds a new customer to the CustomerMenuBoundary database
 	 */
@@ -316,16 +246,16 @@ public class MainMenuBoundary
 	 */
 	private void displaySalesPeople() {};
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	// Customer Menu Boundary
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		public List<Warehouse> warehouses = new ArrayList<Warehouse>();	
-		
+		public List<Warehouse> warehouses = new ArrayList<Warehouse>();
+
 		public void printWarehouseMenu()
 		{
 			while (printWarehouseMenuChoices()) {};
 		}
-		
+
 		/*
 		 * Method to print all menu choices and act upon the input of the user
 		 */
@@ -376,7 +306,7 @@ public class MainMenuBoundary
 				return true;
 			}
 		}
-		
+
 		/*
 		 * Adds a new customer to the CustomerMenuBoundary database
 		 */
