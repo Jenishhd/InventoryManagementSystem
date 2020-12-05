@@ -10,8 +10,8 @@ public class Warehouse
 	 */
 	private class ProductStore implements Comparable<ProductStore>
 	{
-		int quantity;
-		Product product;
+		private int quantity;
+		private Product product;
 		public ProductStore(Product i)
 		{
 			product = i;
@@ -36,6 +36,11 @@ public class Warehouse
 				{
 					return true;
 				}
+				else
+				{
+					System.out.println(o);
+					System.out.println(product.getName());
+				}
 			}
 			return false;
 		}
@@ -46,8 +51,6 @@ public class Warehouse
 			return quantity - otherProduct.quantity;
 		}
 
-
-
 		public Product getProduct()
 		{
 			return product;
@@ -56,6 +59,11 @@ public class Warehouse
 		public int getQuantity()
 		{
 			return quantity;
+		}
+
+		public void setQuantity(int newQuantity)
+		{
+			quantity = newQuantity;
 		}
 
 	}
@@ -106,19 +114,7 @@ public class Warehouse
 	 */
 	public boolean addProduct(Product newProduct)
 	{
-		// ///Finds Product i in the warehouseProducts list
-		// for (int x = 0; x < warehouseProducts.size(); x++)
-		// {
-		// 	if (warehouseProducts.get(x).product.equals(i))
-		// 	{
-		// 		warehouseProducts.get(x).quantity += j;
-		// 		System.out.println("Add Product: Product added successfully");
-		// 		return true;
-		// 	}
-		// }
-		// //If the object is not found in the warehouse storage, print an error message and return false
-		// System.out.println("[ERROR] Add Product: Product not found");
-		// return false;
+
 		ProductStore newProductStore = new ProductStore(newProduct);
 		if (!warehouseProducts.contains(newProductStore))
 		{
@@ -136,6 +132,19 @@ public class Warehouse
 		{
 			System.out.println(warehouseProducts.get(productIt).getProduct().getName() + " "
 						    + warehouseProducts.get(productIt).getQuantity());
+		}
+	}
+
+	public void updateQuantity(String productName, int newQuantity)
+	{
+		ProductStore checking = new ProductStore(new Product(productName));
+		if (warehouseProducts.contains(checking))
+		{
+			warehouseProducts.get(warehouseProducts.indexOf(checking)).setQuantity(newQuantity);
+		}
+		else
+		{
+			System.out.println("**PRODUCT COULD NOT BE FOUND**");
 		}
 	}
 

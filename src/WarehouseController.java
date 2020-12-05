@@ -68,7 +68,19 @@ public class WarehouseController
           }
      }
      public void removeWarehouseItem() {};
-     public void changeWarehouseItemQuantity(/* int i*/) {};
+     public void changeWarehouseItemQuantity(String warehouseName, String productName, int newQuantity)
+     {
+          if (Database.getInstance().getAllWarehouses().containsKey(warehouseName))
+          {
+               Warehouse current = Database.getInstance().getAllWarehouses().get(warehouseName);
+               current.updateQuantity(productName, newQuantity);
+          }
+          else
+          {
+               System.out.println("**WAREHOUSE COULD NOT BE FOUND**");
+          }
+
+     };
 
 
 

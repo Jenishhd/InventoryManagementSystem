@@ -50,13 +50,18 @@ public class WarehouseMenuBoundary
                return true;
           //Adds a certain amount to an item in the warehouse. Item must exist in the warehouse already
           case "6":
-               ///Asks user for number to add
-               warehouseController.changeWarehouseItemQuantity(/*positive int*/);
+               System.out.print("Enter name of warehouse you'd like to edit product quantity: ");
+               String warehouseToEdit = input.nextLine();
+               System.out.print("Enter name of product you'd like to edit quantity of: ");
+               String productToEdit = input.nextLine();
+               System.out.print("Enter new quantity for product: ");
+               int newQuantity = input.nextInt();
+               warehouseController.changeWarehouseItemQuantity(warehouseToEdit, productToEdit, newQuantity);
                return true;
           //Removes a certain amount of an item form the warehouse. Item must exist in the warehouse already, and resulting item quantity cannot be <0
           case "7":
                ///Asks user for number to remove
-               warehouseController.changeWarehouseItemQuantity(/*negative int*/);
+               //warehouseController.changeWarehouseItemQuantity(/*negative int*/);
                return true;
           //Exit
           case "8":
