@@ -6,7 +6,7 @@ public class Main
       // ProductMenuBoundary p = new ProductMenuBoundary();
     	 MainMenuBoundary menu = new MainMenuBoundary();
     	 menu.printMainMenu();
-    	 menu.addCustomer();
+    	 // menu.addCustomer();
     	 return;
      }
 }

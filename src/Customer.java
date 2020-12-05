@@ -1,3 +1,4 @@
+import java.util.*;
 /**
  * Class for containing the information of a product
  *
@@ -16,6 +17,11 @@ public class Customer
 	private String lastName;
 
 	/**
+	* ID number for customer
+	*/
+	private String ID;
+
+	/**
 	* Rate at which customer should be taxed for the sale
 	* stored as decimal NOT percent
 	*/
@@ -29,6 +35,7 @@ public class Customer
 		firstName = "";
 		lastName = "";
 		salesTaxRate = .8;
+		ID = UUID.randomUUID().toString();
 	}
 
 	/**
@@ -103,6 +110,16 @@ public class Customer
 	public void setSalesTaxRate(double newRate)
 	{
 		salesTaxRate = newRate;
+	}
+
+	/**
+	* Gets the ID of the customer
+	*
+	* @return ID of customer
+	*/
+	public String getID()
+	{
+		return ID;
 	}
 
 }

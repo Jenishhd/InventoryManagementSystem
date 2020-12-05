@@ -15,12 +15,14 @@ public class MainMenuBoundary
 	private String password;								//Stored password variable. For now: "Admin"
 
 	ProductMenuBoundary productBoundary;
+	CustomerMenuBoundary customerBoundary;
 
 	public MainMenuBoundary()
 	{
 		username = "Admin";
 		password = "Admin";
 		productBoundary = new ProductMenuBoundary();
+		customerBoundary = new CustomerMenuBoundary();
 	}
 	/*
 	 * Method to print the main selection menu
@@ -50,7 +52,7 @@ public class MainMenuBoundary
 			return true;
 		//Customers
 		case "2":
-			printCustomerMenu();
+			customerBoundary.printCustomerMenuChoices();
 			return true;
 		//Invoices
 		case "3":
@@ -90,20 +92,6 @@ public class MainMenuBoundary
 		}
 		return false;
 	}
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	// ItemMenuBoundary
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// public List<Product> items = new ArrayList<Product>();
-	//
-	// public void printItemMenu()
-	// {
-	// 	///Repeats if printMenuChoices() returns a false value
-	// 	while(printItemMenuChoices()) {};
-	// }
-
-
-
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -113,66 +101,66 @@ public class MainMenuBoundary
 	CreateCustomerBoundary ccb = new CreateCustomerBoundary();
 	RemoveCustomerBoundary rcb = new RemoveCustomerBoundary();
 
-	public void printCustomerMenu()
-	{
-		while (printCustomerMenuChoices()) {};
-	}
+	// public void printCustomerMenu()
+	// {
+	// 	while (printCustomerMenuChoices()) {};
+	// }
 
-	/*
-	 * Method to print all menu choices and act upon the input of the user
-	 */
-	private boolean printCustomerMenuChoices()
-	{
-		System.out.println("\nPlease make a selection:");
-		System.out.println("1) Add Customer\n2) Remove Customer\n3) Show all customers\n4) Exit");
-		//Switch for menu selection. All cases that return true will reprint the menu choices. All cases that return false will not
-		switch(input.nextLine())
-		{
-		//Add customer
-		case "1":
-			///Adds a new customer to the customerMenuBoundary database
-			addCustomer();
-			return true;
-		//Remove customer
-		case "2":
-			///Removes an existing customer entirely. User gets to choose from existing customers in the customerMenuBoundary database
-			removeCustomer();
-			return true;
-		//Show all customers
-		case "3":
-			///Displays the information of all customers in the CustomerMenuChoices database
-			displayCustomers();
-			return true;
-		//Exit
-		case "4":
-			return false;
-		default:
-			System.out.println("Invalid selection. Please try again.");
-			return true;
-		}
-	}
+	// /*
+	//  * Method to print all menu choices and act upon the input of the user
+	//  */
+	// private boolean printCustomerMenuChoices()
+	// {
+	// 	System.out.println("\nPlease make a selection:");
+	// 	System.out.println("1) Add Customer\n2) Remove Customer\n3) Show all customers\n4) Exit");
+	// 	//Switch for menu selection. All cases that return true will reprint the menu choices. All cases that return false will not
+	// 	switch(input.nextLine())
+	// 	{
+	// 	//Add customer
+	// 	case "1":
+	// 		///Adds a new customer to the customerMenuBoundary database
+	// 		addCustomer();
+	// 		return true;
+	// 	//Remove customer
+	// 	case "2":
+	// 		///Removes an existing customer entirely. User gets to choose from existing customers in the customerMenuBoundary database
+	// 		removeCustomer();
+	// 		return true;
+	// 	//Show all customers
+	// 	case "3":
+	// 		///Displays the information of all customers in the CustomerMenuChoices database
+	// 		displayCustomers();
+	// 		return true;
+	// 	//Exit
+	// 	case "4":
+	// 		return false;
+	// 	default:
+	// 		System.out.println("Invalid selection. Please try again.");
+	// 		return true;
+	// 	}
+	// }
 
 	/*
 	 * Adds a new customer to the CustomerMenuBoundary database
 	 */
-	public void addCustomer() {
-		ccb.createCustomer(customers);
-	};
-	/*
-	 * Removes an existing customer from the CustomerMenuBoundary database. Checks if the customer exists
-	 */
-	public void removeCustomer() {
-		rcb.removeCustomer(customers);
-	};
-	/*
-	 * Displays all current customers in the CustomerMenuBoundary database
-	 */
-	public void displayCustomers() {
-		System.out.printf("%-22s%-22s%-22s\n","First Name","Last Name","SalesTax");
-		for(int i = 0; i < customers.size(); i++) {
-			System.out.printf("%-22s%-22s%-22s\n",customers.get(i).getFirstName(),customers.get(i).getLastName(),String.valueOf(customers.get(i).getSalesTaxRate()));
-		}
-	};
+	// public void addCustomer() {
+	// 	ccb.createCustomer(customers);
+	// };
+	// /*
+	//  * Removes an existing customer from the CustomerMenuBoundary database. Checks if the customer exists
+	//  */
+	// public void removeCustomer() {
+	// 	rcb.removeCustomer(customers);
+	// };
+	// /*
+	//  * Displays all current customers in the CustomerMenuBoundary database
+	//  */
+	// public void displayCustomers() {
+	// 	System.out.printf("%-22s%-22s%-22s\n","First Name","Last Name","SalesTax");
+	// 	for(int i = 0; i < customers.size(); i++) {
+	// 		System.out.printf("%-22s%-22s%-22s\n",customers.get(i).getFirstName(),customers.get(i).getLastName(),String.valueOf(customers.get(i).getSalesTaxRate()));
+	// 	}
+	// };
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// Invoice Menu Boundary

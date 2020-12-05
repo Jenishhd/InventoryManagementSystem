@@ -1,14 +1,17 @@
 import java.util.List;
 import java.util.Scanner;
 
-public class CreateCustomerBoundary {
+public class CreateCustomerBoundary
+{
     Scanner scnr = new Scanner(System.in);
 
     /*
      * This method adds a customer defined by the user.
      * The user enters the first and last name and sales tax of the customer they want to add to the given database.
      * */
-    public void createCustomer (List<Customer> customers) {
+    public void createCustomer ()
+    {
+        CustomerController cController = new CustomerController();
         System.out.println("Enter the first name of the customer: ");
         String cFirstName = scnr.nextLine();
 
@@ -20,9 +23,8 @@ public class CreateCustomerBoundary {
         scnr.nextLine();
 
         Customer customer = new Customer(cFirstName,cLastName,cTaxRate);
-        customers.add(customer);
+        cController.addCustomer(customer);
 
         System.out.println("The customer " + cFirstName + " " + cLastName + " was added to the database.");
-
     }
 }
