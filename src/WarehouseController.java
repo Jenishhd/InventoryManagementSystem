@@ -59,6 +59,15 @@ public class WarehouseController
           }
      }
 
+     public void displayProductsLimitedQuantity()
+     {
+          for (String name: Database.getInstance().getAllWarehouses().keySet())
+          {
+               Warehouse current = Database.getInstance().getAllWarehouses().get(name);
+               current.displayLimitedQuantity();
+          }
+     }
+
      public void addWarehouseProduct(Product p)
      {
           for (String warehouseName: Database.getInstance().getAllWarehouses().keySet())

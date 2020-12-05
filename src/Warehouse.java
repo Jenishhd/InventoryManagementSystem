@@ -128,11 +128,37 @@ public class Warehouse
 	{
 		Collections.sort(warehouseProducts);
 		System.out.println(warehouseName);
+		for (int lineCounter = 0; lineCounter < warehouseName.length(); ++lineCounter)
+		{
+			System.out.print("-");
+		}
+		System.out.print("\n");
 		for (int productIt = 0; productIt < warehouseProducts.size(); ++productIt)
 		{
 			System.out.println(warehouseProducts.get(productIt).getProduct().getName() + " "
 						    + warehouseProducts.get(productIt).getQuantity());
 		}
+		System.out.print("\n");
+	}
+
+	public void displayLimitedQuantity()
+	{
+		Collections.sort(warehouseProducts);
+		System.out.println(warehouseName);
+		for (int lineCounter = 0; lineCounter < warehouseName.length(); ++lineCounter)
+		{
+			System.out.print("-");
+		}
+		System.out.print("\n");
+		for (int productIt = 0; productIt < warehouseProducts.size(); ++productIt)
+		{
+			if (warehouseProducts.get(productIt).getQuantity() <= 5)
+			{
+				System.out.println(warehouseProducts.get(productIt).getProduct().getName() + " "
+							    + warehouseProducts.get(productIt).getQuantity());
+			}
+		}
+		System.out.print("\n");
 	}
 
 	public void updateQuantity(String productName, int newQuantity)

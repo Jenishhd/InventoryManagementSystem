@@ -27,7 +27,8 @@ public class WarehouseMenuBoundary
                System.out.println("\nPlease make a selection:");
                System.out.println("1) Add Warehouse\n2) Remove Warehouse\n" +
                                   "3) Show all warehouses\n4) Display All Products With Quantity \n" +
-                                  "5) Edit quantity of an item\n6) Supply item in warehouse\n" +
+                                  "5) Display All Products With Quantity of 5 or Less\n" +
+                                  "6) Edit quantity of an item\n" +
                                   "7) Remove item supply in warehouse\n8) Exit");
                selection = input.nextLine();
                //Switch for menu selection. All cases that return true will reprint the menu choices. All cases that return false will not
@@ -50,20 +51,22 @@ public class WarehouseMenuBoundary
                     ///Asks user to select an item in the itemMenuBoundary to add, and the quantity
                     warehouseController.displayAllWarehousesWithProducts();
                     break;
-               //Allows user to edit quantity of an item in a warehouse
+
                case "5":
+                    warehouseController.displayProductsLimitedQuantity();
+                    break;
+               //Allows user to edit quantity of an item in a warehouse
+               case "6":
                     ///Asks user to select an item in the warehouse to remove
-                    System.out.print("Enter name of warehouse you'd like to edit product quantity: ");
+                    System.out.print("Enter name of warehouse with the product: ");
                     String warehouseToEdit = input.nextLine();
-                    System.out.print("Enter name of product you'd like to edit quantity of: ");
+                    System.out.print("Enter name of product: ");
                     String productToEdit = input.nextLine();
                     System.out.print("Enter new quantity for product: ");
-                    int newQuantity = input.nextInt();
+                    int newQuantity = Integer.parseInt(input.nextLine());
                     warehouseController.changeWarehouseItemQuantity(warehouseToEdit, productToEdit, newQuantity);
                     break;
-               //Adds a certain amount to an item in the warehouse. Item must exist in the warehouse already
-               case "6":
-                    break;
+
                //Removes a certain amount of an item form the warehouse. Item must exist in the warehouse already, and resulting item quantity cannot be <0
                case "7":
                     ///Asks user for number to remove
