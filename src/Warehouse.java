@@ -3,7 +3,7 @@ import java.util.*;
 /*
  * Class for containing the information of a warehouse and the objects it contains
  */
-public class Warehouse 
+public class Warehouse
 {
 	/*
 	 * ProductStore Class to store products stored in the warehouse, as well as the quantity the warehouse contains
@@ -18,10 +18,10 @@ public class Warehouse
 			quantity = 0;
 		}
 	}
-	
+
 	private String warehouseName;
 	private List<ProductStore> warehouseProducts;
-	
+
 	/*
 	 * Constructor
 	 */
@@ -30,16 +30,22 @@ public class Warehouse
 		warehouseName = "";
 		warehouseProducts = new ArrayList<ProductStore>();
 	}
-	
+
+	public Warehouse(String name)
+	{
+		warehouseName = name;
+		warehouseProducts = new ArrayList<ProductStore>();
+	}
+
 	/*
 	 * warehouseName getter
 	 * @return the name of the warehouse as a String variable
 	 */
-	public String GetWarehouseName()
+	public String getWarehouseName()
 	{
 		return warehouseName;
 	}
-	
+
 	/*
 	 * warehouseName setter
 	 */
@@ -47,7 +53,7 @@ public class Warehouse
 	{
 		warehouseName = i;
 	}
-	
+
 	/*
 	 * Adds integer j of a certain Product contained in the warehouse
 	 * @Return True if the addition was successful and False if it was not
@@ -67,8 +73,8 @@ public class Warehouse
 		//If the object is not found in the warehouse storage, print an error message and return false
 		System.out.println("[ERROR] Add Product: Product not found");
 		return false;
-	}	
-	
+	}
+
 	/*
 	 * Removes integer j of a certain Product contained in the warehouse
 	 * @Return True if the removal was successful and False if it was not
@@ -100,7 +106,7 @@ public class Warehouse
 		System.out.println("[ERROR] Remove Product: Item to remove could not be found");
 		return false;
 	}
-	
+
 	/*
 	 * Adds a new product to the warehouse storage
 	 * @Return True if the product is added successfully amd false if it is not
@@ -123,7 +129,7 @@ public class Warehouse
 		System.out.println("Add New Product: New Product added successfully");
 		return true;
 	}
-	
+
 	/*
 	 * Removes an existing product from the warehouse entirely
 	 * @Return True if the product is removed successfully and false if it is not
