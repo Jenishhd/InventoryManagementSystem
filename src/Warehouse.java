@@ -8,7 +8,7 @@ public class Warehouse
 	/*
 	 * ProductStore Class to store products stored in the warehouse, as well as the quantity the warehouse contains
 	 */
-	private class ProductStore
+	private class ProductStore implements Comparable<ProductStore>
 	{
 		int quantity;
 		Product product;
@@ -17,10 +17,51 @@ public class Warehouse
 			product = i;
 			quantity = 0;
 		}
+
+		@Override
+		public boolean equals(Object o)
+		{
+			if (o instanceof ProductStore)
+			{
+				ProductStore productStoreCast = (ProductStore) o;
+				if (productStoreCast.getProduct().getName().equals(product.getName()))
+				{
+					return true;
+				}
+			}
+			if (o instanceof String)
+			{
+				String stringCast = (String) o;
+				if (stringCast.equals(product.getName()))
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		@Override
+		public int compareTo(ProductStore otherProduct)
+		{
+			return quantity - otherProduct.quantity;
+		}
+
+
+
+		public Product getProduct()
+		{
+			return product;
+		}
+
+		public int getQuantity()
+		{
+			return quantity;
+		}
+
 	}
 
 	private String warehouseName;
-	private List<ProductStore> warehouseProducts;
+	private ArrayList<ProductStore> warehouseProducts;
 
 	/*
 	 * Constructor
@@ -54,26 +95,60 @@ public class Warehouse
 		warehouseName = i;
 	}
 
+	public ArrayList<ProductStore> getWarehouseProducts()
+	{
+		return warehouseProducts;
+	}
+
 	/*
 	 * Adds integer j of a certain Product contained in the warehouse
 	 * @Return True if the addition was successful and False if it was not
 	 */
-	public boolean addProduct(Product i, int j)
+	public boolean addProduct(Product newProduct)
 	{
-		///Finds Product i in the warehouseProducts list
-		for (int x = 0; x < warehouseProducts.size(); x++)
+		// ///Finds Product i in the warehouseProducts list
+		// for (int x = 0; x < warehouseProducts.size(); x++)
+		// {
+		// 	if (warehouseProducts.get(x).product.equals(i))
+		// 	{
+		// 		warehouseProducts.get(x).quantity += j;
+		// 		System.out.println("Add Product: Product added successfully");
+		// 		return true;
+		// 	}
+		// }
+		// //If the object is not found in the warehouse storage, print an error message and return false
+		// System.out.println("[ERROR] Add Product: Product not found");
+		// return false;
+		ProductStore newProductStore = new ProductStore(newProduct);
+		if (!warehouseProducts.contains(newProductStore))
 		{
-			if (warehouseProducts.get(x).product.equals(i))
-			{
-				warehouseProducts.get(x).quantity += j;
-				System.out.println("Add Product: Product added successfully");
-				return true;
-			}
+			warehouseProducts.add(newProductStore);
+			return true;
 		}
-		//If the object is not found in the warehouse storage, print an error message and return false
-		System.out.println("[ERROR] Add Product: Product not found");
 		return false;
 	}
+
+	public void displayAllProducts()
+	{
+		Collections.sort(warehouseProducts);
+		System.out.println(warehouseName);
+		for (int productIt = 0; productIt < warehouseProducts.size(); ++productIt)
+		{
+			System.out.println(warehouseProducts.get(productIt).getProduct().getName() + " "
+						    + warehouseProducts.get(productIt).getQuantity());
+		}
+	}
+
+	// public void sortItems()
+	// {
+	// 	for (int productIt = 0; productIt < warehouseProducts.size() - 1; ++productIt)
+	// 	{
+	// 		for (int compareIt = 0; compareIt < warehouseProducts.size() - productIt - 1; ++compareIt)
+	// 		{
+	//
+	// 		}
+	// 	}
+	// }
 
 	/*
 	 * Removes integer j of a certain Product contained in the warehouse

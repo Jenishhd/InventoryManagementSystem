@@ -25,8 +25,13 @@ public class ProductController
 
 		//Adds the completed item to the database
 		Database.getInstance().getAllProducts().put(temp.getName(), temp);
+
+		//Adds product to all warehouses
+		WarehouseController wc = new WarehouseController();
+		wc.addWarehouseProduct(temp);
+
 		System.out.println(temp.getName() + " successfully added!");
-          
+
 	}
 
 	/*
