@@ -222,8 +222,9 @@ public class Invoice
 		{
 			purchases.put(product, quantity);
 		}
-		totalCost += product.getSellPrice() * quantity;
-		remainingCost += product.getSellPrice() * quantity;
+		double tax = (product.getSellPrice() * quantity) * debtor.getSalesTaxRate();
+		totalCost += (product.getSellPrice() * quantity) + tax;
+		remainingCost += (product.getSellPrice() * quantity) + tax;
 	}
 
 
@@ -241,6 +242,9 @@ public class Invoice
 
 	public void printInvoice()
 	{
+		double subtotal = 0;
+		double total = 0;
+		System.out.println("Customer: " + debtor.getFirstName() + " " + debtor.getLastName());
 		System.out.println("Product Name                      Quantity Purchased               Price Of Items");
 		System.out.println("---------------------------------------------------------------------------------");
 		for (Product current: purchases.keySet())
@@ -252,12 +256,18 @@ public class Invoice
 				System.out.print(" ");
 			}
 			System.out.print(purchases.get(current));
-			for (int spaceCounter = 0; spaceCounter <  35 - current.getName().length(); ++spaceCounter)
+			for (int spaceCounter = 0; spaceCounter <  30 - String.valueOf(purchases.get(current)).length(); ++spaceCounter)
 			{
 				System.out.print(" ");
 			}
 			System.out.print(itemPrice);
+			subtotal += itemPrice;
 			System.out.println("");
 		}
+		double tax = subtotal * debtor.getSalesTaxRate();
+		System.out.println("Subtotal: " + subtotal);
+		System.out.println("Tax: $" + tax);
+		total = subtotal + tax;
+		System.out.println("Total = $" + total);
 	}
 }
