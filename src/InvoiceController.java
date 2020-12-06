@@ -8,6 +8,9 @@ public class InvoiceController
 	public void addInvoice()
      {
           Scanner input = new Scanner(System.in);
+
+          Invoice newInvoice = new Invoice();
+
           HashMap<String, Product> products = Database.getInstance().getAllProducts();
           boolean buyMore = true;
           String selection = "0";
@@ -15,7 +18,6 @@ public class InvoiceController
           outerLoop:
           while (buyMore)
           {
-               Invoice newInvoice = new Invoice();
                //Search for product
                System.out.print("Enter product in purchase: ");
                String productName = input.nextLine();
@@ -41,6 +43,7 @@ public class InvoiceController
                          }
                     }
                }
+               Product productToAdd = products.get(productName);
 
                //Select quantity for invoice
                System.out.print("How many would you like to add to invoice: ");
@@ -69,6 +72,9 @@ public class InvoiceController
                     }
                }
 
+               newInvoice.addProduct(productToAdd, quantity);
+
+
                selection = "0";
                while (!selection.equals("y") && !selection.equals("n"))
                {
@@ -88,6 +94,9 @@ public class InvoiceController
                     }
                }
           }
+          newInvoice.printInvoice();
+
+
 
      }
 	/*

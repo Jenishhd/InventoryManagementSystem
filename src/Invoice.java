@@ -234,4 +234,13 @@ public class Invoice
 	{
              return (int)( (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
      }
+
+	public void printInvoice()
+	{
+		for (Product current: purchases.keySet())
+		{
+			double itemPrice = current.getSellPrice() * purchases.get(current);
+			System.out.println(current.getName() + " " + purchases.get(current) +  " " + current.getSellPrice());
+		}
+	}
 }

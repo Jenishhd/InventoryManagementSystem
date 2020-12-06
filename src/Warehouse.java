@@ -180,6 +180,24 @@ public class Warehouse
 		}
 	}
 
+	public void changeQuantityByAmount(String productName, int changeQuantity)
+	{
+		ProductController productController = new ProductController();
+		ProductStore checking = new ProductStore(new Product(productName));
+		if (warehouseProducts.contains(checking))
+		{
+			Product toEdit = productController.getProduct(productName);
+			productController.updateQuantity(productName,toEdit.getQuantity() + changeQuantity);
+			warehouseProducts.get(warehouseProducts.indexOf(checking)).setQuantity(
+							  warehouseProducts.get(warehouseProducts.indexOf(checking)).getQuantity() + changeQuantity);
+		}
+		else
+		{
+			System.out.println("**PRODUCT COULD NOT BE FOUND**");
+		}
+
+	}
+
 	// public void sortItems()
 	// {
 	// 	for (int productIt = 0; productIt < warehouseProducts.size() - 1; ++productIt)

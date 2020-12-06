@@ -89,7 +89,20 @@ public class WarehouseController
                System.out.println("**WAREHOUSE COULD NOT BE FOUND**");
           }
 
-     };
+     }
+
+     public void changeQuantityByAmount(String warehouseName, String productName, int shiftInQuantity)
+     {
+          if (Database.getInstance().getAllWarehouses().containsKey(warehouseName))
+          {
+               Warehouse current = Database.getInstance().getAllWarehouses().get(warehouseName);
+               current.changeQuantityByAmount(productName, shiftInQuantity);
+          }
+          else
+          {
+               System.out.println("**WAREHOUSE COULD NOT BE FOUND**");
+          }
+     }
 
 
 
