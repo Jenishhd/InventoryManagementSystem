@@ -10,7 +10,6 @@ public class SalesPerson
 	private double commPercent;
 	private Map<Customer, Double> commissions;
 	private Map<Customer, Double> commissionsDone;
-	private double payment;
 	/*
 	 * Constructor
 	 */
@@ -100,6 +99,11 @@ public class SalesPerson
 		}
 		return total;
 	}
+	/**
+	 * Method which clears the commissions that they did when they get paid. 
+	 * Data of their total commissions and transactions are still stored within program
+	 * as a safety measure
+	 */
 	public void salesPersonPaid() {
 		commissions.clear();
 	}
