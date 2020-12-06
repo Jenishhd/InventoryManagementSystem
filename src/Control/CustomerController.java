@@ -1,3 +1,8 @@
+package Control;
+import DB.*;
+import Entity.*;
+
+
 public class CustomerController
 {
      /*
@@ -9,14 +14,14 @@ public class CustomerController
 	}
 
 	/*
-	 * Removes an existing customer from the CustomerMenuBoundary database. Checks if the customer exists
+	 * Removes an existing customer from the Boundary.CustomerMenuBoundary database. Checks if the customer exists
 	 */
 	public void removeCustomer()
      {
 		//rcb.removeCustomer(customers);
 	}
 	/*
-	 * Displays all current customers in the CustomerMenuBoundary database
+	 * Displays all current customers in the Boundary.CustomerMenuBoundary database
 	 */
 	public void displayCustomers()
      {

@@ -1,10 +1,16 @@
+package Control;
+
+import DB.*;
+import Entity.*;
+import Entity.*;
+
 import java.util.*;
 public class WarehouseController
 {
 
 
      /*
-      * Adds a new customer to the CustomerMenuBoundary database
+      * Adds a new customer to the Boundary.CustomerMenuBoundary database
       */
      public void addWarehouse()
      {
@@ -20,7 +26,7 @@ public class WarehouseController
           Database.getInstance().getAllWarehouses().put(name, newWarehouse);
      }
      /*
-      * Removes an existing customer from the CustomerMenuBoundary database. Checks if the customer exists
+      * Removes an existing customer from the Boundary.CustomerMenuBoundary database. Checks if the customer exists
       */
      public void removeWarehouse()
      {
@@ -38,7 +44,7 @@ public class WarehouseController
      };
 
      /*
-      * Displays all current customers in the CustomerMenuBoundary database
+      * Displays all current customers in the Boundary.CustomerMenuBoundary database
       */
      public void displayWarehouses()
      {

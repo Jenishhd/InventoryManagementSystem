@@ -1,3 +1,7 @@
+package Boundary;
+
+import Control.InvoiceController;
+
 import java.util.*;
 
 public class InvoiceMenuBoundary

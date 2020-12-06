@@ -1,3 +1,7 @@
+package Boundary;
+
+import Control.WarehouseController;
+
 import java.util.*;
 
 public class WarehouseMenuBoundary
@@ -34,11 +38,11 @@ public class WarehouseMenuBoundary
                //Switch for menu selection. All cases that return true will reprint the menu choices. All cases that return false will not
                switch(selection)
                {
-               //Add customer
+               //Add Warehouse
                case "1":
                     warehouseController.addWarehouse();
                     break;
-               //Remove customer
+               //Remove Warehouse
                case "2":
                     warehouseController.removeWarehouse();
                     break;

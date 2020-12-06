@@ -1,3 +1,5 @@
+package Entity;
+
 /*
  * class for containing the information of a product
  */

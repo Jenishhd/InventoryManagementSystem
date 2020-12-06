@@ -1,3 +1,5 @@
+package Entity;
+
 import java.util.*;
 /*
  * Class for containing the information of an invoice
