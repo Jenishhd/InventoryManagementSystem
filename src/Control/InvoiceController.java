@@ -17,7 +17,7 @@ public class InvoiceController
      {
           Scanner input = new Scanner(System.in);
 
-          Invoice newInvoice = new Invoice();
+
 
           HashMap<String, Product> products = Database.getInstance().getAllProducts();
           HashMap<String, Customer> customers = Database.getInstance().getAllCustomers();
@@ -53,6 +53,28 @@ public class InvoiceController
                }
           }
           Customer purchaseMaker = customers.get(customerName);
+
+          selection = "0";
+          boolean isDelivered = true;
+          while (!selection.equals("y") && !selection.equals("n"))
+          {
+               System.out.print("Is this purchase to be delivered?(y/n): ");
+               selection =  input.nextLine();
+               if (selection.equals("y"))
+               {
+                    isDelivered = true;
+               }
+               else if (selection.equals("n"))
+               {
+                    isDelivered = false;
+               }
+               else
+               {
+                    System.out.println("**INVALID INPUT TRY AGAIN**");
+               }
+          }
+          Invoice newInvoice = new Invoice(purchaseMaker, isDelivered);
+
 
           outerLoop:
           while (buyMore)
@@ -156,6 +178,7 @@ public class InvoiceController
                     }
                }
           }
+          System.out.println("");
           newInvoice.printInvoice();
           Database.getInstance().getAllInvoices().add(newInvoice);
 

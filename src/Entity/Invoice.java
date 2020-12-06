@@ -79,6 +79,7 @@ public class Invoice
 		debtor = newDebtor;
 		isDelivered = newDelivered;
 
+
 		//Set default values for remaining members
 
 		//Sets date of invoice creation to current day
@@ -95,6 +96,11 @@ public class Invoice
 		purchases = new HashMap<Product, Integer>();
 		totalCost = 0;
 		remainingCost = 0;
+		if (isDelivered)
+		{
+			totalCost += 10;
+			remainingCost += 10;
+		}
 
 	}
 
@@ -264,10 +270,16 @@ public class Invoice
 			subtotal += itemPrice;
 			System.out.println("");
 		}
+		System.out.println("");
 		double tax = subtotal * debtor.getSalesTaxRate();
 		System.out.println("Subtotal: " + subtotal);
 		System.out.println("Tax: $" + tax);
 		total = subtotal + tax;
+		if (isDelivered)
+		{
+			System.out.println("Delivery Fee: $10");
+			total += 10;
+		}
 		System.out.println("Total = $" + total);
 	}
 }
