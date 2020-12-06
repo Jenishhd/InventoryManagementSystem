@@ -4,6 +4,7 @@ import DB.Database;
 import Entity.Customer;
 import Entity.Invoice;
 import Entity.Product;
+import Entity.SalesPerson;
 import Entity.Warehouse;
 
 import java.util.*;
@@ -192,7 +193,9 @@ public class InvoiceController
 	/*
 	 * Adds a new salesperson to the customerMenuBoundary database
 	 */
-	public void addSalesPerson() {};
+	public void addSalesPerson(SalesPerson sp) {
+		Database.getInstance().getAllSalesPersons().put(sp.getFirstName()+ " "+sp.getLastName(),sp);
+	};
 	/*
 	 * Removes an existing salesperson from the customerMenuBoundary database
 	 */

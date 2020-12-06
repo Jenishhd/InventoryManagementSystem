@@ -7,13 +7,28 @@ import java.util.*;
  */
 public class SalesPerson 
 {
+	/**
+	 * First name of the SalesPerson
+	 */
 	private String firstName;
+	/**
+	 * Last name of the SalesPerson
+	 */
 	private String lastName;
+	/**
+	 * Commission percentage of the SalesPerson
+	 */
 	private double commPercent;
+	/**
+	 * The commissions done of the SalesPerson that isn't paid to the Salesperson yet
+	 */
 	private Map<Customer, Double> commissions;
+	/**
+	 * The total amount of commissions done by the SalesPerson
+	 */
 	private Map<Customer, Double> commissionsDone;
 	/*
-	 * Constructor
+	 * Constructor of SalesPerson
 	 */
 	public SalesPerson()
 	{
@@ -24,6 +39,12 @@ public class SalesPerson
 		commissions = new HashMap<Customer,Double>();
 		commissionsDone = new HashMap<Customer,Double>();
 	}
+	/**
+	 * Parameterized Constructor of SalesPerson
+	 * @param first First Name of SalesPerson
+	 * @param last Last Name of SalesPerson
+	 * @param percent Commission Percentage of SalesPerson
+	 */
 	public SalesPerson(String first, String last, double percent) {
 		firstName = first;
 		lastName = last;
