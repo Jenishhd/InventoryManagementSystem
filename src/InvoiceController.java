@@ -12,16 +12,45 @@ public class InvoiceController
           Invoice newInvoice = new Invoice();
 
           HashMap<String, Product> products = Database.getInstance().getAllProducts();
+          HashMap<String, Customer> customers = Database.getInstance().getAllCustomers();
           boolean buyMore = true;
           String selection = "0";
+          boolean validInvoice = true;
 
           outerLoop:
           while (buyMore)
           {
+               System.out.print("Enter full name of customer: ");
+               String customerName = input.nextLine();
+               if (!customers.containsKey(customerName))
+               {
+                    System.out.println("**CUSTOMER NOT FOUND**");
+                    selection = "0";
+                    while (!selection.equals("y") && !selection.equals("n"))
+                    {
+                         System.out.print("Would you like to search for another customer (y/n): ");
+                         selection =  input.nextLine();
+                         if (selection.equals("y"))
+                         {
+                              continue outerLoop;
+                         }
+                         else if (selection.equals("n"))
+                         {
+                              validInvoice = false;
+                              break outerLoop;
+                         }
+                         else
+                         {
+                              System.out.println("**INVALID INPUT TRY AGAIN**");
+                         }
+                    }
+               }
+               Customer purchaseMaker = customers.get(customerName);
+
                //Search for product
                System.out.print("Enter product in purchase: ");
                String productName = input.nextLine();
-               if (!products.containsKey(productName))
+               while (!products.containsKey(productName))
                {
                     System.out.println("**PRODUCT NOT FOUND**");
                     selection = "0";
@@ -31,10 +60,12 @@ public class InvoiceController
                          selection =  input.nextLine();
                          if (selection.equals("y"))
                          {
-                              continue outerLoop;
+                              System.out.print("Enter product in purchase: ");
+                              productName = input.nextLine();
                          }
                          else if (selection.equals("n"))
                          {
+                              validInvoice = false;
                               break outerLoop;
                          }
                          else
@@ -63,6 +94,7 @@ public class InvoiceController
                          }
                          else if (selection.equals("n"))
                          {
+                              validInvoice = false;
                               break outerLoop;
                          }
                          else
@@ -72,6 +104,10 @@ public class InvoiceController
                     }
                }
 
+               if (!validInvoice)
+               {
+                    return;
+               }
                newInvoice.addProduct(productToAdd, quantity);
 
 
