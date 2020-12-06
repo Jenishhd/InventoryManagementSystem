@@ -17,6 +17,7 @@ public class MainMenuBoundary
 	ProductMenuBoundary productBoundary;
 	CustomerMenuBoundary customerBoundary;
 	WarehouseMenuBoundary warehouseBoundary;
+	InvoiceMenuBoundary invoiceBoundary;
 
 	public MainMenuBoundary()
 	{
@@ -25,6 +26,7 @@ public class MainMenuBoundary
 		productBoundary = new ProductMenuBoundary();
 		customerBoundary = new CustomerMenuBoundary();
 		warehouseBoundary = new WarehouseMenuBoundary();
+		invoiceBoundary = new InvoiceMenuBoundary();
 	}
 	/*
 	 * Method to print the main selection menu
@@ -58,7 +60,7 @@ public class MainMenuBoundary
 			return true;
 		//Invoices
 		case "3":
-			printInvoiceMenu();
+			invoiceBoundary.printInvoiceMenuChoices();
 			return true;
 		//Warehouses
 		case "4":
@@ -167,74 +169,74 @@ public class MainMenuBoundary
 
 	// Invoice Menu Boundary
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public List<Invoice> invoices = new ArrayList<Invoice>();
-	public List<SalesPerson> salesPeople = new ArrayList<SalesPerson>();
+	// public List<Invoice> invoices = new ArrayList<Invoice>();
+	// public List<SalesPerson> salesPeople = new ArrayList<SalesPerson>();
 
-	public void printInvoiceMenu()
-	{
-		while (printInvoiceMenuChoices()) {};
-	}
+	// public void printInvoiceMenu()
+	// {
+	// 	while (printInvoiceMenuChoices()) {};
+	// }
 
-	/*
-	 * Method to print all menu choices and act upon the input of the user
-	 */
-	private boolean printInvoiceMenuChoices()
-	{
-		System.out.println("\nPlease make a selection:");
-		System.out.println("1) Add Invoice\n2) Show all invoices\n3) Add new salesperson\n4) Remove salesperson\n5) Show salespeople\n6) Exit");
-		//Switch for menu selection. All cases that return true will reprint the menu choices. All cases that return false will not
-		switch(input.nextLine())
-		{
-		//Add customer
-		case "1":
-			//Adds a new invoice to the invoiceMenuChoices database. Takes an existing product, customer and salesperson
-			addInvoice();
-			return true;
-		//Show all customers
-		case "2":
-			displayInvoices();
-			return true;
-		//Add new Salesperson
-		case "3":
-			addSalesPerson();
-			return true;
-		//Remove existing Salesperson
-		case "4":
-			removeSalesPerson();
-			return true;
-		//Displays all salespeople
-		case "5":
-			displaySalesPeople();
-			return true;
-		//Exit
-		case "6":
-			return false;
-		default:
-			System.out.println("Invalid selection. Please try again.");
-			return true;
-		}
-	}
-
-	/*
-	 * Adds a new customer to the CustomerMenuBoundary database
-	 */
-	private void addInvoice() {};
-	/*
-	 * Displays the information of all invoices in the customerMenuBoundary
-	 */
-	private void displayInvoices() {};
-	/*
-	 * Adds a new salesperson to the customerMenuBoundary database
-	 */
-	private void addSalesPerson() {};
-	/*
-	 * Removes an existing salesperson from the customerMenuBoundary database
-	 */
-	private void removeSalesPerson() {};
-	/*
-	 * displays the information of all salespeople in the customerMenuBoundary database
-	 */
-	private void displaySalesPeople() {};
+	// /*
+	//  * Method to print all menu choices and act upon the input of the user
+	//  */
+	// private boolean printInvoiceMenuChoices()
+	// {
+	// 	System.out.println("\nPlease make a selection:");
+	// 	System.out.println("1) Add Invoice\n2) Show all invoices\n3) Add new salesperson\n4) Remove salesperson\n5) Show salespeople\n6) Exit");
+	// 	//Switch for menu selection. All cases that return true will reprint the menu choices. All cases that return false will not
+	// 	switch(input.nextLine())
+	// 	{
+	// 	//Add customer
+	// 	case "1":
+	// 		//Adds a new invoice to the invoiceMenuChoices database. Takes an existing product, customer and salesperson
+	// 		addInvoice();
+	// 		return true;
+	// 	//Show all customers
+	// 	case "2":
+	// 		displayInvoices();
+	// 		return true;
+	// 	//Add new Salesperson
+	// 	case "3":
+	// 		addSalesPerson();
+	// 		return true;
+	// 	//Remove existing Salesperson
+	// 	case "4":
+	// 		removeSalesPerson();
+	// 		return true;
+	// 	//Displays all salespeople
+	// 	case "5":
+	// 		displaySalesPeople();
+	// 		return true;
+	// 	//Exit
+	// 	case "6":
+	// 		return false;
+	// 	default:
+	// 		System.out.println("Invalid selection. Please try again.");
+	// 		return true;
+	// 	}
+	// }
+	//
+	// /*
+	//  * Adds a new customer to the CustomerMenuBoundary database
+	//  */
+	// private void addInvoice() {};
+	// /*
+	//  * Displays the information of all invoices in the customerMenuBoundary
+	//  */
+	// private void displayInvoices() {};
+	// /*
+	//  * Adds a new salesperson to the customerMenuBoundary database
+	//  */
+	// private void addSalesPerson() {};
+	// /*
+	//  * Removes an existing salesperson from the customerMenuBoundary database
+	//  */
+	// private void removeSalesPerson() {};
+	// /*
+	//  * displays the information of all salespeople in the customerMenuBoundary database
+	//  */
+	// private void displaySalesPeople() {};
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// Customer Menu Boundary
