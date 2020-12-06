@@ -1,3 +1,7 @@
+package Boundary;
+
+import Entity.Customer;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,7 +11,7 @@ import java.util.Scanner;
  */
 public class MainMenuBoundary
 {
-	// Main Menu Boundary
+	// Main.Main Menu Boundary
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	Scanner input = new Scanner(System.in);
 
@@ -145,19 +149,19 @@ public class MainMenuBoundary
 	// }
 
 	/*
-	 * Adds a new customer to the CustomerMenuBoundary database
+	 * Adds a new customer to the Boundary.CustomerMenuBoundary database
 	 */
 	// public void addCustomer() {
 	// 	ccb.createCustomer(customers);
 	// };
 	// /*
-	//  * Removes an existing customer from the CustomerMenuBoundary database. Checks if the customer exists
+	//  * Removes an existing customer from the Boundary.CustomerMenuBoundary database. Checks if the customer exists
 	//  */
 	// public void removeCustomer() {
 	// 	rcb.removeCustomer(customers);
 	// };
 	// /*
-	//  * Displays all current customers in the CustomerMenuBoundary database
+	//  * Displays all current customers in the Boundary.CustomerMenuBoundary database
 	//  */
 	// public void displayCustomers() {
 	// 	System.out.printf("%-22s%-22s%-22s\n","First Name","Last Name","SalesTax");
@@ -218,7 +222,7 @@ public class MainMenuBoundary
 	// }
 	//
 	// /*
-	//  * Adds a new customer to the CustomerMenuBoundary database
+	//  * Adds a new customer to the Boundary.CustomerMenuBoundary database
 	//  */
 	// private void addInvoice() {};
 	// /*

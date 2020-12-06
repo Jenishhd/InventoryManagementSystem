@@ -1,4 +1,7 @@
+package DB;
+
 import java.util.*;
+import Entity.*;
 
 public class Database
 {

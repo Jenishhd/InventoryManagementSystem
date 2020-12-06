@@ -1,3 +1,7 @@
+package Main;
+
+import Boundary.*;
+
 public class Main
 {
      public static void main(String[] args)

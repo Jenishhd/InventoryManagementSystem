@@ -1,3 +1,7 @@
+package Boundary;
+
+import Control.ProductController;
+
 import java.util.*;
 public class ProductMenuBoundary
 {

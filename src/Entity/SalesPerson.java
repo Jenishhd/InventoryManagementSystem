@@ -1,3 +1,5 @@
+package Entity;
+
 import java.util.*;
 
 /*
@@ -21,6 +23,11 @@ public class SalesPerson
 		commPercent = 0.0;
 		commissions = new HashMap<Customer,Double>();
 		commissionsDone = new HashMap<Customer,Double>();
+	}
+	public SalesPerson(String first, String last, double percent) {
+		firstName = first;
+		lastName = last;
+		commPercent = percent;
 	}
 	/**
 	 * Method which sets the first name of the SalesPerson

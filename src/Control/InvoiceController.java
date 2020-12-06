@@ -1,9 +1,16 @@
+package Control;
+
+import DB.Database;
+import Entity.Customer;
+import Entity.Invoice;
+import Entity.Product;
+
 import java.util.*;
 
 public class InvoiceController
 {
      /*
-	 * Adds a new customer to the CustomerMenuBoundary database
+	 * Adds a new customer to the Boundary.CustomerMenuBoundary database
 	 */
 	public void addInvoice()
      {

@@ -1,4 +1,7 @@
+package Entity;
+
 import java.util.*;
+import Control.*;
 
 /*
  * Class for containing the information of a warehouse and the objects it contains
