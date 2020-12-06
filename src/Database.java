@@ -21,7 +21,7 @@ public class Database
      /**
      * Maps name of debtor to one or many invoices, holds all invoice objects
      */
-     private HashMap<String, Invoice> allInvoices;
+     private ArrayList<Invoice> allInvoices;
 
      /**
      * Maps name of salesperson to salesperson object, holds all salespeople
@@ -40,7 +40,7 @@ public class Database
      {
           allWarehouses = new HashMap<String, Warehouse>();
           allCustomers = new HashMap<String, Customer>();
-          allInvoices = new HashMap<String, Invoice>();
+          allInvoices = new ArrayList<Invoice>();
           allSalesPersons = new HashMap<String, SalesPerson>();
           allProducts = new HashMap<String, Product>();
      }
@@ -70,7 +70,7 @@ public class Database
      *
      * @return Map of all invoices
      */
-     public HashMap<String, Invoice> getAllInvoices()
+     public ArrayList<Invoice> getAllInvoices()
      {
           return allInvoices;
      }

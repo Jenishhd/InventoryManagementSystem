@@ -95,6 +95,7 @@ public class InvoiceController
                }
           }
           newInvoice.printInvoice();
+          Database.getInstance().getAllInvoices().add(newInvoice);
 
 
 
