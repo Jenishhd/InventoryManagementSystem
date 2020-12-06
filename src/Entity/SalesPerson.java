@@ -24,6 +24,11 @@ public class SalesPerson
 		commissions = new HashMap<Customer,Double>();
 		commissionsDone = new HashMap<Customer,Double>();
 	}
+	public SalesPerson(String first, String last, double percent) {
+		firstName = first;
+		lastName = last;
+		commPercent = percent;
+	}
 	/**
 	 * Method which sets the first name of the SalesPerson
 	 * @param first
