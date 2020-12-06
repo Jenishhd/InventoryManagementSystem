@@ -239,11 +239,11 @@ public class Invoice
 
 	public void printInvoice()
 	{
+		System.out.println("Product Name                      Quantity Purchased               Price Of Items");
+		System.out.println("---------------------------------------------------------------------------------");
 		for (Product current: purchases.keySet())
 		{
 			double itemPrice = current.getSellPrice() * purchases.get(current);
-			System.out.println("Product Name                      Quantity Purchased               Price Of Items");
-			System.out.println("---------------------------------------------------------------------------------");
 			System.out.print(current.getName());
 			for (int spaceCounter = 0; spaceCounter <  42 - current.getName().length(); ++spaceCounter)
 			{
@@ -254,7 +254,8 @@ public class Invoice
 			{
 				System.out.print(" ");
 			}
-			System.out.print(current.getSellPrice());
+			System.out.print(itemPrice);
+			System.out.println("");
 		}
 	}
 }

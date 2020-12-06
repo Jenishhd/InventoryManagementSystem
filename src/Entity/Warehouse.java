@@ -201,6 +201,17 @@ public class Warehouse
 
 	}
 
+	public int getQuantity(String productName)
+	{
+		ProductStore checking = new ProductStore(new Product(productName));
+		if (warehouseProducts.contains(checking))
+		{
+			return warehouseProducts.get(warehouseProducts.indexOf(checking)).getQuantity();
+		}
+		return -1;
+
+	}
+
 	// public void sortItems()
 	// {
 	// 	for (int productIt = 0; productIt < warehouseProducts.size() - 1; ++productIt)

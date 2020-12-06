@@ -4,6 +4,7 @@ import DB.Database;
 import Entity.Customer;
 import Entity.Invoice;
 import Entity.Product;
+import Entity.Warehouse;
 
 import java.util.*;
 
@@ -20,39 +21,43 @@ public class InvoiceController
 
           HashMap<String, Product> products = Database.getInstance().getAllProducts();
           HashMap<String, Customer> customers = Database.getInstance().getAllCustomers();
+          HashMap<String, Warehouse> warehouses = Database.getInstance().getAllWarehouses();
           boolean buyMore = true;
           String selection = "0";
           boolean validInvoice = true;
 
+          System.out.print("Enter full name of customer: ");
+          String customerName = input.nextLine();
+          while (!customers.containsKey(customerName))
+          {
+               System.out.println("**CUSTOMER NOT FOUND**");
+               selection = "0";
+               while (!selection.equals("y") && !selection.equals("n"))
+               {
+                    System.out.print("Would you like to search for another customer (y/n): ");
+                    selection =  input.nextLine();
+                    if (selection.equals("y"))
+                    {
+                         System.out.print("Enter full name of customer: ");
+                         customerName = input.nextLine();
+                    }
+                    else if (selection.equals("n"))
+                    {
+                         validInvoice = false;
+                         buyMore = false;
+                    }
+                    else
+                    {
+                         System.out.println("**INVALID INPUT TRY AGAIN**");
+                    }
+               }
+          }
+          Customer purchaseMaker = customers.get(customerName);
+
           outerLoop:
           while (buyMore)
           {
-               System.out.print("Enter full name of customer: ");
-               String customerName = input.nextLine();
-               if (!customers.containsKey(customerName))
-               {
-                    System.out.println("**CUSTOMER NOT FOUND**");
-                    selection = "0";
-                    while (!selection.equals("y") && !selection.equals("n"))
-                    {
-                         System.out.print("Would you like to search for another customer (y/n): ");
-                         selection =  input.nextLine();
-                         if (selection.equals("y"))
-                         {
-                              continue outerLoop;
-                         }
-                         else if (selection.equals("n"))
-                         {
-                              validInvoice = false;
-                              break outerLoop;
-                         }
-                         else
-                         {
-                              System.out.println("**INVALID INPUT TRY AGAIN**");
-                         }
-                    }
-               }
-               Customer purchaseMaker = customers.get(customerName);
+
 
                //Search for product
                System.out.print("Enter product in purchase: ");
@@ -116,7 +121,21 @@ public class InvoiceController
                     return;
                }
                newInvoice.addProduct(productToAdd, quantity);
+               int quantityToRemove = quantity;
+               productToAdd.setQuantity(productToAdd.getQuantity() - quantity);
+               for (String warehouseName: Database.getInstance().getAllWarehouses().keySet())
+               {
 
+                    if (quantityToRemove > warehouses.get(warehouseName).getQuantity(productToAdd.getName()))
+                    {
+                         quantityToRemove -= warehouses.get(warehouseName).getQuantity(productToAdd.getName());
+                         warehouses.get(warehouseName).updateQuantity(productToAdd.getName(), 0);
+                    }
+                    else
+                    {
+                         warehouses.get(warehouseName).changeQuantityByAmount(productToAdd.getName(), -1 * quantityToRemove);
+                    }
+               }
 
                selection = "0";
                while (!selection.equals("y") && !selection.equals("n"))

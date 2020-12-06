@@ -51,7 +51,7 @@ public class CreateSalesPersonBoundary {
 			
 		}
 		SalesPerson sp = new SalesPerson(spFirstName,spLastName,Integer.parseInt(percentage));
-		IController.addSalesPerson(sp);
+		//IController.addSalesPerson(sp);
 		System.out.println("The customer " + spFirstName + " " + spLastName + " was added to the database.");
 		
 		
