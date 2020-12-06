@@ -222,6 +222,8 @@ public class Invoice
 		{
 			purchases.put(product, quantity);
 		}
+		totalCost += product.getSellPrice() * quantity;
+		remainingCost += product.getSellPrice() * quantity;
 	}
 
 
