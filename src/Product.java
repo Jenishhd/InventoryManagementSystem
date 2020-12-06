@@ -89,6 +89,11 @@ public class Product
 		name = i;
 	}
 
+	public void setQuantity(int newQuantity)
+	{
+		quantity = newQuantity;
+	}
+
 	/**
 	* Returns sell  price of item
 	*
@@ -98,6 +103,7 @@ public class Product
 	{
 		return sellPrice;
 	}
+
 
 	/**
 	 * changes the sell price of item

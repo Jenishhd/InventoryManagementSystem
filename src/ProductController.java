@@ -60,4 +60,21 @@ public class ProductController
                ++i;
 		}
 	}
+
+	public void updateQuantity(String productName, int newQuantity)
+	{
+		if (Database.getInstance().getAllProducts().containsKey(productName))
+		{
+			Database.getInstance().getAllProducts().get(productName).setQuantity(newQuantity);
+		}
+	}
+
+	public Product getProduct(String productName)
+	{
+		if (Database.getInstance().getAllProducts().containsKey(productName))
+		{
+			return Database.getInstance().getAllProducts().get(productName);
+		}
+		return null;
+	}
 }
