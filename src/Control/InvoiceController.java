@@ -193,9 +193,7 @@ public class InvoiceController
 	/*
 	 * Adds a new salesperson to the customerMenuBoundary database
 	 */
-	public void addSalesPerson(SalesPerson sp) {
-		Database.getInstance().getAllSalesPersons().put(sp.getFirstName()+ " "+sp.getLastName(),sp);
-	};
+	public void addSalesPerson() {};
 	/*
 	 * Removes an existing salesperson from the customerMenuBoundary database
 	 */
