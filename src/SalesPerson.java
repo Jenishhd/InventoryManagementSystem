@@ -61,6 +61,7 @@ public class SalesPerson
 	/**
 	 * Method which returns the total Commissions that the SalesPerson has done
 	 * @return total commissions done
+	 * note: may be obselete
 	 */
 	public int getTotalCommissions() {
 		return 0;
