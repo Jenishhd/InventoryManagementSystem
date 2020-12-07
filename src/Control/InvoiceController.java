@@ -225,4 +225,47 @@ public class InvoiceController
 	 * displays the information of all salespeople in the customerMenuBoundary database
 	 */
 	public void displaySalesPeople() {};
+
+	public void makePayment()
+    {
+         Scanner input = new Scanner(System.in);
+         ArrayList<Invoice> invoices = Database.getInstance().getAllInvoices();
+         System.out.print("Enter full name of debtor: ");
+         String debtorName = input.nextLine();
+
+         String selection = "0";
+         outerLoop:
+         for (Invoice current: invoices)
+         {
+              String fullName = current.getDebtor().getFirstName() + " " + current.getDebtor().getLastName();
+              if (fullName.equals(debtorName))
+              {
+                   current.printInvoice();
+                   selection = "0";
+                   while (!selection.equals("y") && !selection.equals("n"))
+                   {
+                        System.out.println("Is this the invoice?(y/n)");
+                        selection = input.nextLine();
+                        switch (selection)
+                        {
+                             case "y":
+                                  System.out.print("Enter payment amount: ");
+                                  double payment = Double.parseDouble(input.nextLine());
+                                  current.makePayment(payment);
+                                  System.out.println("Remaining Invoice Balance: " + current.getRemainingCost());
+                                  break outerLoop;
+
+                             case "n":
+                                  continue outerLoop;
+                             default:
+                                  System.out.println("**INVALID INPUT**");
+                        }
+                   }
+              }
+         }
+
+
+
+
+    }
 }

@@ -46,7 +46,7 @@ public class InvoiceMenuBoundary
           		break;
           	//Add new Salesperson
           	case "3":
-          		invoiceController.addSalesPerson();
+          		invoiceController.makePayment();
           		break;
           	//Remove existing Salesperson
           	case "4":
