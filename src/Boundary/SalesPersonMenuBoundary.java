@@ -10,7 +10,7 @@ public class SalesPersonMenuBoundary {
 		spb = new SalesPersonBoundary();
 		spc = new SalesPersonController();
 	}
-	public void printSalesPersonMenu()
+	public void printSalesPersonMenuChoices()
 	{
 		Scanner scan = new Scanner(System.in);
 		String selection = "0";
@@ -34,6 +34,9 @@ public class SalesPersonMenuBoundary {
 				spb.paySalesPerson();
 				break;
 			case "5":
+				break;
+			default:
+				System.out.println("Invalid Input. Please Try Again.");
 				break;
 			}
 			

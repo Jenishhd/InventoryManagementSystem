@@ -22,6 +22,7 @@ public class MainMenuBoundary
 	CustomerMenuBoundary customerBoundary;
 	WarehouseMenuBoundary warehouseBoundary;
 	InvoiceMenuBoundary invoiceBoundary;
+	SalesPersonMenuBoundary salesPersonBoundary;
 
 	public MainMenuBoundary()
 	{
@@ -31,6 +32,7 @@ public class MainMenuBoundary
 		customerBoundary = new CustomerMenuBoundary();
 		warehouseBoundary = new WarehouseMenuBoundary();
 		invoiceBoundary = new InvoiceMenuBoundary();
+		salesPersonBoundary = new SalesPersonMenuBoundary();
 	}
 	/*
 	 * Method to print the main selection menu
@@ -50,7 +52,7 @@ public class MainMenuBoundary
 	public boolean printMenuChoices()
 	{
 		System.out.println("\nPlease make a selection:");
-		System.out.println("1) Items and Products\n2) Customers\n3) Invoices\n4) Warehouses\n5) Exit");
+		System.out.println("1) Items and Products\n2) Customers\n3) Invoices\n4) Warehouses\n5) SalesPerson\n6) Exit");
 
 		//Switch for menu selection. All cases that return true will reprint the menu choices. All cases that return false will not
 		switch(input.nextLine())
@@ -73,6 +75,9 @@ public class MainMenuBoundary
 			return true;
 		//Exit
 		case "5":
+			salesPersonBoundary.printSalesPersonMenuChoices();
+			return true;
+		case "6":
 			return false;
 		default:
 			System.out.println("Selection invalid. Please try again.");
