@@ -163,7 +163,7 @@ public class Product
 	 */
 	public double getTotalCost()
 	{
-		return (quantity * costPrice);
+		return (quantitySold * costPrice);
 	}
 
 	/**
@@ -180,6 +180,14 @@ public class Product
 	public void calcTotalProfitPercent()
 	{
 		totalProfitPercent = (totalProfit / getTotalCost());
+	}
+
+	/**
+	 *
+	 */
+	public void increaseQuantitySold(int newQuantity)
+	{
+		quantitySold += newQuantity;
 	}
 
 

@@ -146,6 +146,7 @@ public class InvoiceController
                newInvoice.addProduct(productToAdd, quantity);
                int quantityToRemove = quantity;
                productToAdd.setQuantity(productToAdd.getQuantity() - quantity);
+               productToAdd.increaseQuantitySold(quantity);
                for (String warehouseName: Database.getInstance().getAllWarehouses().keySet())
                {
 
