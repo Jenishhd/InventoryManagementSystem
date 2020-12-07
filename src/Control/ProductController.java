@@ -67,13 +67,13 @@ public class ProductController
 			return;
 		}
 
-          int i = 0;
 		//Print the names of all products stored in the database
 		System.out.println("Products: ");
-		for (String key: Database.getInstance().getAllProducts().keySet())
+		System.out.printf("%-22s%-22s%-22s\n","Name","Cost Price","Sell Price");
+		for (String name: Database.getInstance().getAllProducts().keySet())
 		{
-			System.out.println((i + 1) + ") " + key);
-               ++i;
+			Product current = Database.getInstance().getAllProducts().get(name);
+			System.out.printf("%-22s%-22s%-22s\n", (current.getName()), ("$" + current.getCostPrice()), ("$" + current.getSellPrice()));
 		}
 	}
 

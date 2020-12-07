@@ -29,7 +29,7 @@ public class CustomerController
 		for(String name: Database.getInstance().getAllCustomers().keySet())
           {
                Customer current = Database.getInstance().getAllCustomers().get(name);
-			System.out.printf("%-22s%-22s%-22s\n",current.getFirstName(),current.getLastName(),String.valueOf(current.getSalesTaxRate()));
+               System.out.printf("%-22s%-22s%-22s\n",current.getFirstName(),current.getLastName(),String.valueOf(current.getSalesTaxRate()));
 		}
 	};
 }
