@@ -4,6 +4,7 @@ import DB.Database;
 import Entity.Customer;
 import Entity.Invoice;
 import Entity.Product;
+import Entity.SalesPerson;
 import Entity.Warehouse;
 
 import java.util.*;

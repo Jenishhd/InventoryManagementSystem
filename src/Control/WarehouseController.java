@@ -48,11 +48,18 @@ public class WarehouseController
       */
      public void displayWarehouses()
      {
-          System.out.println("Warehouses");
-          System.out.println("----------");
+    	 System.out.println("Warehouses:");
+    	 System.out.printf("%-22s%-22s\n","Name","Total Item Quantity");
           for (String name: Database.getInstance().getAllWarehouses().keySet())
           {
-               System.out.println(name);
+        	  Warehouse current = Database.getInstance().getAllWarehouses().get(name);
+        	  int temp = 0;
+        	  for (int i = 0; i < current.getWarehouseProducts().size(); i++)
+        	  {
+        		  temp += current.getQuantityIndex(i);
+        	  }
+        	  
+        	  System.out.printf("%-22s%-22s\n", name, temp);
           }
      }
 

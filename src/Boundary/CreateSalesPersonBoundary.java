@@ -9,13 +9,15 @@ import java.util.regex.Pattern;
 
 public class CreateSalesPersonBoundary {
 	
-	private InvoiceController invoiceController;
-	
+	private SalesPersonController spController;
+	/**
+	 * Method which creates a SalesPerson defined by user.
+	 * User will add the SalesPerson's first name, last name, and commission percentage here.
+	 */
 	public void createSalesPerson()
 	{
 		boolean isNum=false;
 		Scanner scan = new Scanner(System.in);
-		InvoiceController IController = new InvoiceController();
 		System.out.println("Enter First Name of SalesPerson: ");
 		String spFirstName = scan.nextLine();
 		
@@ -25,6 +27,7 @@ public class CreateSalesPersonBoundary {
 		System.out.println("Enter SalesPerson's commission percentage\nPlease use numbers and decimals.\nDo not add % sign");
 		String percentage = scan.nextLine();
 		while(!isNum) {
+			//pattern and Matcher used here to detect special symbol inputs that are invalid
 			Pattern patt = Pattern.compile("[^a-zA-Z]", Pattern.CASE_INSENSITIVE);
 			Matcher mat = patt.matcher(percentage);
 			boolean check = mat.find();
@@ -51,7 +54,7 @@ public class CreateSalesPersonBoundary {
 			
 		}
 		SalesPerson sp = new SalesPerson(spFirstName,spLastName,Integer.parseInt(percentage));
-		//IController.addSalesPerson(sp);
+		spController.addSalesPerson(sp);
 		System.out.println("The customer " + spFirstName + " " + spLastName + " was added to the database.");
 		
 		
