@@ -1,13 +1,11 @@
 package Boundary;
-
 import Control.*;
 import Entity.*;
 import java.util.Scanner;
 import java.lang.Character;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-public class CreateSalesPersonBoundary {
+public class SalesPersonBoundary {
 	
 	private SalesPersonController spController;
 	/**
@@ -56,8 +54,51 @@ public class CreateSalesPersonBoundary {
 		SalesPerson sp = new SalesPerson(spFirstName,spLastName,Integer.parseInt(percentage));
 		spController.addSalesPerson(sp);
 		System.out.println("The customer " + spFirstName + " " + spLastName + " was added to the database.");
-		
+		scan.close();
 		
 	}
-
+	/**
+	 * Removes SalesPerson from the salesPerson map in the database.
+	 */
+	public void removeSalesPerson()
+	{
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter First Name of SalesPerson: ");
+		String spFirstName = scan.nextLine();
+		
+		System.out.println("Enter Last Name of SalesPerson: ");
+		String spLastName = scan.nextLine();
+		
+		spController.removeSalesPerson(spFirstName+ " "+ spLastName);
+		scan.close();
+	}
+	/**
+	 * Gives the value of the amount of commissions a salesPerson has
+	 * done after getting paid. 
+	 */
+	public void paySalesPerson() {
+		Scanner scan = new Scanner(System.in);
+		String input ="";
+		System.out.println("Enter First Name of SalesPerson: ");
+		String spFirstName = scan.nextLine();
+		
+		System.out.println("Enter Last Name of SalesPerson: ");
+		String spLastName = scan.nextLine();
+		
+		SalesPerson sp = spController.getSalesPerson(spFirstName + " "+ spLastName);
+		System.out.println("SalesPerson: " + sp.getFirstName() + " " +sp.getLastName());
+		System.out.println("Money owed to SalesPerson: "+sp.getPayment());
+		System.out.println("Will you pay this SalesPerson? Y/N");
+		while(!input.equals("y")||!input.equals("n")) {
+			input = scan.nextLine().toLowerCase();
+			if(input.equals("y")) {
+				sp.salesPersonPaid();
+				System.out.println("SalesPerson has been paid.");
+			}
+			else if(!input.equals("n")||!input.equals("y")) {
+				System.out.println("Invalid Input. Please choose y or n");
+			}
+		}
+		scan.close();
+	}
 }

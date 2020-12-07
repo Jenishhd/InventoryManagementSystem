@@ -24,6 +24,15 @@ public class SalesPersonController {
 			System.out.println("SalesPerson does not exist in the database.");
 		}
 	}
+	public SalesPerson getSalesPerson(String sp) {
+		if(Database.getInstance().getAllSalesPersons().containsKey(sp)) {
+			return Database.getInstance().getAllSalesPersons().get(sp);
+		}
+		else {
+			System.out.println("SalesPerson does not exist in the database.");
+			return null;
+		}
+	}
 	/**
 	 * Displays all SalesPersons in the database
 	 */
