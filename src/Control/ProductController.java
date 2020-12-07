@@ -12,7 +12,7 @@ public class ProductController
 	 */
 	public void addProduct()
 	{
-          Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 		//Creates temporary product value
 		Product temp = new Product();
 
@@ -20,14 +20,25 @@ public class ProductController
 		System.out.print("Product Name: ");
 		temp.setName(input.nextLine());
 
-		//Takes product cost price as input
-		System.out.print("Cost to produce: ");
-		temp.setCostPrice(Double.parseDouble(input.nextLine()));
-
-		//Takes product sale price as input
-		System.out.print("Price to sell: ");
-		temp.setSellPrice(Double.parseDouble(input.nextLine()));
-
+		//Trys for invalid input. If input is not parsable to a Double...
+		try 
+		{ 
+			//Takes product cost price as input
+			System.out.print("Cost to produce: ");
+			temp.setCostPrice(Double.parseDouble(input.nextLine())); 
+			
+			//Takes product sell price as input
+			System.out.print("Price to sell: ");
+			temp.setSellPrice(Double.parseDouble(input.nextLine()));
+			}
+		///...then
+		catch(NumberFormatException e)
+		{
+			//Print error message and terminate 
+			System.out.println("[ERROR] Incorrect input type. AddProduct() aborted");
+			return;
+		}		
+		
 		//Adds the completed item to the database
 		Database.getInstance().getAllProducts().put(temp.getName(), temp);
 
