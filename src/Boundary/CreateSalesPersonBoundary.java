@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class CreateSalesPersonBoundary {
 	
-	private InvoiceController invoiceController;
+	private SalesPersonController spController;
 	/**
 	 * Method which creates a SalesPerson defined by user.
 	 * User will add the SalesPerson's first name, last name, and commission percentage here.
@@ -55,7 +55,7 @@ public class CreateSalesPersonBoundary {
 			
 		}
 		SalesPerson sp = new SalesPerson(spFirstName,spLastName,Integer.parseInt(percentage));
-		//IController.addSalesPerson(sp);
+		spController.addSalesPerson(sp);
 		System.out.println("The customer " + spFirstName + " " + spLastName + " was added to the database.");
 		
 		
