@@ -3,6 +3,7 @@ import Control.CustomerController;
 import Entity.Customer;
 
 
+import java.util.InputMismatchException;
 import java.util.List;
 
 import java.util.Scanner;
@@ -17,6 +18,7 @@ public class CreateCustomerBoundary
      * */
     public void createCustomer ()
     {
+        double cTaxRate = 0;
         CustomerController cController = new CustomerController();
         System.out.println("Enter the first name of the customer: ");
         String cFirstName = scnr.nextLine();
@@ -24,9 +26,17 @@ public class CreateCustomerBoundary
         System.out.println("Enter the last name of the customer: ");
         String cLastName = scnr.nextLine();
 
-        System.out.println("Enter the tax rate applied to the customer: ");
-        double cTaxRate = scnr.nextDouble();
-        scnr.nextLine();
+        try
+        {
+            System.out.println("Enter the tax rate applied to the customer: ");
+            cTaxRate = scnr.nextDouble();
+            scnr.nextLine();
+        }
+        catch(InputMismatchException e)
+        {
+            System.out.println("Incorrect input type! Please re create with correct type.");
+            return;
+        }
 
         Customer customer = new Customer(cFirstName,cLastName,cTaxRate);
         cController.addCustomer(customer);
