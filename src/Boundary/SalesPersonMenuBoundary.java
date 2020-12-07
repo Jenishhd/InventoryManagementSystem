@@ -41,6 +41,6 @@ public class SalesPersonMenuBoundary {
 			}
 			
 		}
-		scan.close();
+		//scan.close();
 	}
 }
