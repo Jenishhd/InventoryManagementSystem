@@ -211,6 +211,12 @@ public class Warehouse
 		return -1;
 
 	}
+	
+	public int getQuantityIndex(int productIndex)
+	{
+		return warehouseProducts.get(productIndex).getQuantity();
+
+	}
 
 	// public void sortItems()
 	// {
