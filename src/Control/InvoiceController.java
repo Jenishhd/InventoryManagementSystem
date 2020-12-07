@@ -189,7 +189,30 @@ public class InvoiceController
 	/*
 	 * Displays the information of all invoices in the customerMenuBoundary
 	 */
-	public void displayInvoices() {};
+	public void displayInvoices()
+    {
+         System.out.print("Debtor Name");
+         for (int spaceCounter = 0; spaceCounter < 35; ++spaceCounter)
+         {
+              System.out.print(" ");
+         }
+         System.out.println("Date Created");
+         for (int spaceCounter = 0; spaceCounter < 77; ++spaceCounter)
+         {
+              System.out.print("-");
+         }
+         System.out.println("");
+         for(Invoice current: Database.getInstance().getAllInvoices())
+         {
+              String fullName = current.getDebtor().getFirstName() + " " + current.getDebtor().getLastName();
+              System.out.print(fullName);
+              for (int spaceCounter = 0; spaceCounter < 46 - fullName.length(); ++spaceCounter)
+              {
+                   System.out.print(" ");
+              }
+              System.out.println(current.getDateCreated().getTime().toString());
+         }
+    }
 	/*
 	 * Adds a new salesperson to the customerMenuBoundary database
 	 */

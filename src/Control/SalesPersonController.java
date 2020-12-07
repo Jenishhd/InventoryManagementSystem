@@ -1,6 +1,5 @@
 package Control;
 import DB.Database;
-import Entity.Customer;
 import Entity.SalesPerson;
 
 
@@ -15,11 +14,14 @@ public class SalesPersonController {
 		Database.getInstance().getAllSalesPersons().put(sp.getFirstName()+" "+sp.getLastName(), sp);
 	}
 	/**
-	 * 
+	 * Removes a SalesPerson from the salesPerson map in the database
 	 */
-	public void removeSalesPerson(SalesPerson sp) {
-		if(Database.getInstance().getAllSalesPersons().containsKey(sp.getFirstName()+" "+sp.getLastName())) {
-			Database.getInstance().getAllSalesPersons().remove(sp.getFirstName()+" "+sp.getLastName());
+	public void removeSalesPerson(String sp) {
+		if(Database.getInstance().getAllSalesPersons().containsKey(sp)) {
+			Database.getInstance().getAllSalesPersons().remove(sp);
+		}
+		else {
+			System.out.println("SalesPerson does not exist in the database.");
 		}
 	}
 	/**

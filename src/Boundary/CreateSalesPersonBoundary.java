@@ -18,7 +18,6 @@ public class CreateSalesPersonBoundary {
 	{
 		boolean isNum=false;
 		Scanner scan = new Scanner(System.in);
-		InvoiceController IController = new InvoiceController();
 		System.out.println("Enter First Name of SalesPerson: ");
 		String spFirstName = scan.nextLine();
 		
