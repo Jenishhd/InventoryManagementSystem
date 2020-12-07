@@ -213,18 +213,7 @@ public class InvoiceController
               System.out.println(current.getDateCreated().getTime().toString());
          }
     }
-	/*
-	 * Adds a new salesperson to the customerMenuBoundary database
-	 */
-	public void addSalesPerson() {};
-	/*
-	 * Removes an existing salesperson from the customerMenuBoundary database
-	 */
-	public void removeSalesPerson() {};
-	/*
-	 * displays the information of all salespeople in the customerMenuBoundary database
-	 */
-	public void displaySalesPeople() {};
+
 
 	public void makePayment()
     {

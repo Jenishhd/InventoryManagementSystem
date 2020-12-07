@@ -48,17 +48,11 @@ public class InvoiceMenuBoundary
           	case "3":
           		invoiceController.makePayment();
           		break;
-          	//Remove existing Salesperson
-          	case "4":
-          		invoiceController.removeSalesPerson();
-          		break;
-          	//Displays all salespeople
-          	case "5":
-          		invoiceController.displaySalesPeople();
-          		break;
           	//Exit
-          	case "6":
+          	case "4":
+
           		break;
+
           	default:
           		System.out.println("Invalid selection. Please try again.");
           		break;
