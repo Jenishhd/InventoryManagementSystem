@@ -37,7 +37,8 @@ public class MainMenuBoundary
 	 */
 	public void printMainMenu()
 	{
-		System.out.println("Welcome to the databse! Please log in to continue");
+		System.out.println("Welcome to the database! Please log in to continue");
+		System.out.println("--------------------------------------------------");
 		//Repeats the login process if a valid login attempt is not made
 		while (getLogin()) {};
 		while (printMenuChoices()) {}
