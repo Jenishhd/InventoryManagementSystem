@@ -37,11 +37,14 @@ public class SalesPersonController {
 	 * Displays all SalesPersons in the database
 	 */
 	public void displaySalesPerson() {
+		System.out.println("\nSalespeople");
+		System.out.println("-----------");
 		System.out.printf("%-22s%-22s%-22s\n","First Name","Last Name","Commission Percentage");
 		for(String name: Database.getInstance().getAllSalesPersons().keySet())
           {
                SalesPerson current = Database.getInstance().getAllSalesPersons().get(name);
 			System.out.printf("%-22s%-22s%-22s\n",current.getFirstName(),current.getLastName(),String.valueOf(current.getCommissionPercentage()));
 		}
+		System.out.println("-----------");
 	}
 }
