@@ -145,7 +145,7 @@ public class InvoiceController
                }
                newInvoice.addProduct(productToAdd, quantity);
                int quantityToRemove = quantity;
-               productToAdd.setQuantity(productToAdd.getQuantity() - quantity);
+               //productToAdd.setQuantity(productToAdd.getQuantity() - quantity);
                productToAdd.increaseQuantitySold(quantity);
                for (String warehouseName: Database.getInstance().getAllWarehouses().keySet())
                {
@@ -192,27 +192,15 @@ public class InvoiceController
 	 */
 	public void displayInvoices()
     {
-         System.out.print("Debtor Name");
-         for (int spaceCounter = 0; spaceCounter < 35; ++spaceCounter)
-         {
-              System.out.print(" ");
-         }
-         System.out.println("Date Created");
-         for (int spaceCounter = 0; spaceCounter < 77; ++spaceCounter)
-         {
-              System.out.print("-");
-         }
-         System.out.println("");
-         for(Invoice current: Database.getInstance().getAllInvoices())
-         {
-              String fullName = current.getDebtor().getFirstName() + " " + current.getDebtor().getLastName();
-              System.out.print(fullName);
-              for (int spaceCounter = 0; spaceCounter < 46 - fullName.length(); ++spaceCounter)
-              {
-                   System.out.print(" ");
-              }
-              System.out.println(current.getDateCreated().getTime().toString());
-         }
+		System.out.println("\nInvoices");
+		System.out.println("--------");
+		System.out.printf("%-40s%-40s\n", "Debtor Name", "Date Created");
+		for(Invoice current: Database.getInstance().getAllInvoices())
+        {
+             String fullName = current.getDebtor().getFirstName() + " " + current.getDebtor().getLastName();
+             System.out.printf("%-40s%-40s\n", fullName, current.getDateCreated().getTime().toString());
+        }
+		System.out.println("--------\n");
     }
 
 

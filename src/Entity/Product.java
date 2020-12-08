@@ -147,6 +147,15 @@ public class Product
 	{
 		return quantitySold;
 	}
+	
+	/**
+	 * Updates the total number of units sold
+	 * @param i new number of units sold
+	 */
+	public void setQuantitySold(int i)
+	{
+		quantitySold = i;
+	}
 
 	/**
 	 * Returns the total money earned from sale of this product

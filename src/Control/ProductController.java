@@ -68,12 +68,20 @@ public class ProductController
 		}
 
 		//Print the names of all products stored in the database
-		System.out.println("Products: ");
-		System.out.printf("%-22s%-22s%-22s\n","Name","Cost Price","Sell Price");
+		System.out.println("\nProducts");
+		System.out.println("--------");
+		System.out.printf("%-22s%-22s%-22s%-22s%-22s%-22s%-22s%-22s%-22s\n","Name","Sell Price","Cost Price", "Quantity", "Units Sold", "Total Sales", "Total Cost", "Total Profit", "Total Profit Percent");
 		for (String name: Database.getInstance().getAllProducts().keySet())
 		{
 			Product current = Database.getInstance().getAllProducts().get(name);
-			System.out.printf("%-22s%-22s%-22s\n", (current.getName()), ("$" + current.getCostPrice()), ("$" + current.getSellPrice()));
+			
+			double totalSales = current.getQuantitySold() * current.getSellPrice();
+			double totalCost = current.getQuantitySold() * current.getCostPrice();
+			double totalProfit = totalSales - totalCost;
+			
+			System.out.printf("%-22s%-22s%-22s%-22s%-22s%-22s%-22s%-22s%-22s\n", (current.getName()), ("$" + current.getCostPrice()), ("$" + current.getSellPrice()), current.getQuantity(), current.getQuantitySold(), 
+					("$" + totalSales), ("$" + totalCost), ("$" + totalProfit), (totalProfit / totalCost) * 100.0);
+			System.out.println("--------\n");
 		}
 	}
 
