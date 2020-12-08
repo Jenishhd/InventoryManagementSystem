@@ -11,6 +11,8 @@ import java.util.*;
 
 public class InvoiceController
 {
+     private Object UserComparator;
+
      /*
 	 * Adds a new customer to the Boundary.CustomerMenuBoundary database
 	 */
@@ -242,8 +244,32 @@ public class InvoiceController
               }
          }
 
-
-
-
     }
+     //RFP DISPLAY METHOD
+     public void displayClosedInvoices()
+     {
+          List<Invoice> invoices = new ArrayList(Database.getInstance().getAllInvoices());
+          invoices.sort((Comparator<? super Invoice>) UserComparator);
+
+          System.out.println("\nClosed Invoices");
+          System.out.println("--------------------");
+          System.out.printf("%-40s%-40s%-40s%-40s\n", "Debtor Name","Address", "Date Created", "Invoice Amount");
+          for(Invoice current: invoices)
+          {
+               if(current.isOpen() == false) {
+                    String fullName = current.getDebtor().getFirstName() + " " + current.getDebtor().getLastName();
+                    System.out.printf("%-40s%-40s%-40s%-40s\n", fullName, current.getAddress(), current.getDateCreated().getTime().toString(), Double.toString(current.getTotalCost()) );
+               }
+          }
+          System.out.println("--------\n");
+     }
+
+     public class UserComparator implements Comparator<Invoice> {
+          @Override
+          public int compare(Invoice i1, Invoice i2) {
+               return Double.compare(i1.getTotalCost(),i2.getTotalCost());
+          }
+     }
+
+
 }
