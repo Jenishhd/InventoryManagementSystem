@@ -45,7 +45,10 @@ public class Invoice
 	* Map of products and quantities in invoice purchase
 	*/
 	private Map<Product, Integer> purchases;
-
+	/*
+	 * Address for the invoice
+	 */
+	private String address;
 	/*
 	 * Default Constructor
 	 */
@@ -160,6 +163,22 @@ public class Invoice
 	public Customer getDebtor()
 	{
 		return debtor;
+	}
+	/**
+	 * returns the value of the invoice's address
+	 * @return the address of the invoice
+	 */
+	public String getAddress()
+	{
+		return address;
+	}
+	/**
+	 * Updates the value of the invoice's address
+	 * @param i the new value of address
+	 */
+	public void setAddress(String i)
+	{
+		address = i;
 	}
 
 	/**

@@ -39,11 +39,11 @@ public class SalesPersonController {
 	public void displaySalesPerson() {
 		System.out.println("\nSalespeople");
 		System.out.println("-----------");
-		System.out.printf("%-22s%-22s%-22s\n","First Name","Last Name","Commission Percentage");
+		System.out.printf("%-22s%-22s%-30s%-22s%-22s\n","First Name","Last Name","Commission Percentage", "Total Sales", "Total Commission");
 		for(String name: Database.getInstance().getAllSalesPersons().keySet())
           {
                SalesPerson current = Database.getInstance().getAllSalesPersons().get(name);
-			System.out.printf("%-22s%-22s%-22s\n",current.getFirstName(),current.getLastName(),String.valueOf(current.getCommissionPercentage()));
+			System.out.printf("%-22s%-22s%-30s%-22s%-22s\n",current.getFirstName(),current.getLastName(),String.valueOf(current.getCommissionPercentage()), current.getTotalSales(), current.getTotalCommissionEarned());
 		}
 		System.out.println("-----------");
 	}

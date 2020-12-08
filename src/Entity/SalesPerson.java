@@ -28,6 +28,14 @@ public class SalesPerson
 	 */
 	private Map<Customer, Double> commissionsDone;
 	/*
+	 * Total earned from sales by this salesperson
+	 */
+	private double totalSales;
+	/*
+	 * Total commission earned from sales
+	 */
+	private double totalCommission;
+	/*
 	 * Constructor of SalesPerson
 	 */
 	public SalesPerson()
@@ -85,6 +93,39 @@ public class SalesPerson
 	public String getLastName() {
 		return lastName;
 	}
+	/**
+	 * Returns the total profit from sales by this salesperson
+	 * @return total sales
+	 */
+	public double getTotalSales()
+	{
+		return totalSales;
+	}
+	/**
+	 * Updates the value of totalSales
+	 * @param i new value of totalSales
+	 */
+	public void setTotalSales(double i)
+	{
+		totalSales = i;
+	}
+	/**
+	 * returns the total commissions from sales by this salesperson
+	 * @return total commissions
+	 */
+	public double getTotalCommissionEarned() 
+	{
+		return totalCommission;
+	}
+	/**
+	 * Updates the value of totalCommissions
+	 * @param i new value of totalCommissions
+	 */
+	public void setTotalCommissionEarned(double i)
+	{
+		totalCommission = i;
+	}
+	
 	/**
 	 * Method which adds a commission that a salesperson has transacted and 
 	 * stores it to their individual person.

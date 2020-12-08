@@ -194,11 +194,11 @@ public class InvoiceController
     {
 		System.out.println("\nInvoices");
 		System.out.println("--------");
-		System.out.printf("%-40s%-40s\n", "Debtor Name", "Date Created");
+		System.out.printf("%-40s%-40s%-40s\n", "Debtor Name","Address", "Date Created");
 		for(Invoice current: Database.getInstance().getAllInvoices())
         {
              String fullName = current.getDebtor().getFirstName() + " " + current.getDebtor().getLastName();
-             System.out.printf("%-40s%-40s\n", fullName, current.getDateCreated().getTime().toString());
+             System.out.printf("%-40s%-40s%-40s\n", fullName, current.getAddress(),current.getDateCreated().getTime().toString());
         }
 		System.out.println("--------\n");
     }
