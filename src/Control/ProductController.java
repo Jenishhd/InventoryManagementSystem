@@ -67,14 +67,14 @@ public class ProductController
 			return;
 		}
 
-		//Print the names of all products stored in the database
+		//Print the names of all products stored in the database sorted in decreasing profit percentage
 		System.out.println("\nProducts");
 		System.out.println("--------");
 		System.out.printf("%-22s%-22s%-22s%-22s%-22s%-22s%-22s%-22s%-22s\n","Name","Sell Price","Cost Price", "Quantity", "Units Sold", "Total Sales", "Total Cost", "Total Profit", "Total Profit Percent");
-		for (String name: Database.getInstance().getAllProducts().keySet())
+		List<Product> products = new ArrayList<>(Database.getInstance().getAllProducts().values());
+		Collections.sort(products, new productComparator().reversed());
+		for (Product current: products)
 		{
-			Product current = Database.getInstance().getAllProducts().get(name);
-			
 			double totalSales = current.getQuantitySold() * current.getSellPrice();
 			double totalCost = current.getQuantitySold() * current.getCostPrice();
 			double totalProfit = totalSales - totalCost;
@@ -82,6 +82,14 @@ public class ProductController
 			System.out.printf("%-22s%-22s%-22s%-22s%-22s%-22s%-22s%-22s%-22s\n", (current.getName()), ("$" + current.getCostPrice()), ("$" + current.getSellPrice()), current.getQuantity(), current.getQuantitySold(), 
 					("$" + totalSales), ("$" + totalCost), ("$" + totalProfit), (totalProfit / totalCost) * 100.0);
 			System.out.println("--------\n");
+		}
+	}
+	//COMPARES PROFIT PERCENTAGE (LONG CAUSE WE DONT HAVE PROFIT PERCENTAGE VARIABLE IN PRODUCT)
+	public class productComparator implements Comparator<Product> {
+		@Override
+		public int compare(Product p1, Product p2) {
+			return Double.compare( (100*(p1.getQuantitySold()*p1.getSellPrice())/(p1.getQuantitySold() * p1.getCostPrice())),
+									(100*(p2.getQuantitySold()*p2.getSellPrice())/(p2.getQuantitySold() * p2.getCostPrice())));
 		}
 	}
 
