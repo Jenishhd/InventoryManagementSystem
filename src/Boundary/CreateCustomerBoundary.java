@@ -38,7 +38,7 @@ public class CreateCustomerBoundary
             return;
         }
 
-        Customer customer = new Customer(cFirstName,cLastName,cTaxRate);
+        Customer customer = new Customer(cFirstName,cLastName,cTaxRate / 100.0);
         cController.addCustomer(customer);
 
         System.out.println("The customer " + cFirstName + " " + cLastName + " was added to the database.");
