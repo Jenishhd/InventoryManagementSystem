@@ -79,8 +79,8 @@ public class ProductController
 			double totalCost = current.getQuantitySold() * current.getCostPrice();
 			double totalProfit = totalSales - totalCost;
 			
-			System.out.printf("%-22s%-22s%-22s%-22s%-22s%-22s%-22s%-22s%-22s\n", (current.getName()), ("$" + current.getCostPrice()), ("$" + current.getSellPrice()), current.getQuantity(), current.getQuantitySold(), 
-					("$" + totalSales), ("$" + totalCost), ("$" + totalProfit), (totalProfit / totalCost) * 100.0);
+			System.out.printf("%-22s$%-22.2f$%-22.2f%-22s%-22s$%-22.2f$%-22.2f$%-22.2f%-22.2f\n", (current.getName()), current.getCostPrice(), current.getSellPrice(), current.getQuantity(), current.getQuantitySold(), 
+					totalSales, totalCost, totalProfit, (totalProfit / totalCost) * 100.0);
 			System.out.println("--------");
 		}
 	}
