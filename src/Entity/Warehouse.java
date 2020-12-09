@@ -155,11 +155,18 @@ public class Warehouse
 		System.out.print("\n");
 		for (int productIt = 0; productIt < warehouseProducts.size(); ++productIt)
 		{
+			for (int j = productIt; j <warehouseProducts.size();j++)
+			{
+				if(warehouseProducts.get(productIt).getQuantity()>warehouseProducts.get(j).getQuantity()) {
+					Collections.swap(warehouseProducts, productIt, j);
+				}
+			}
 			if (warehouseProducts.get(productIt).getQuantity() <= 5)
 			{
 				System.out.println(warehouseProducts.get(productIt).getProduct().getName() + " "
 							    + warehouseProducts.get(productIt).getQuantity());
 			}
+		
 		}
 		System.out.print("\n");
 	}
