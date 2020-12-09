@@ -32,7 +32,7 @@ public class WarehouseMenuBoundary
                System.out.println("1) Add Warehouse\n2) Remove Warehouse\n" +
                                   "3) Show all warehouses\n4) Display All Products With Quantity \n" +
                                   "5) Display All Products With Quantity of 5 or Less\n" +
-                                  "6) Edit quantity of an item\n" +
+                                  "6) Add/Edit quantity of an item to Warehouse\n" +
                                   "7) Remove item supply in warehouse\n8) Exit");
                selection = input.nextLine();
                //Switch for menu selection. All cases that return true will reprint the menu choices. All cases that return false will not
@@ -66,8 +66,21 @@ public class WarehouseMenuBoundary
                     String warehouseToEdit = input.nextLine();
                     System.out.print("Enter name of product: ");
                     String productToEdit = input.nextLine();
-                    System.out.print("Enter new quantity for product: ");
-                    int newQuantity = Integer.parseInt(input.nextLine());
+                    int newQuantity = 0;
+                    try
+                    {
+                    	System.out.print("Enter new quantity for product: ");
+                        newQuantity = Integer.parseInt(input.nextLine());
+//                        System.out.println("Enter the tax rate (percentage) applied to the customer: ");
+//                        cTaxRate = scnr.nextDouble();
+//                        scnr.nextLine();
+                    }
+                    catch(NumberFormatException e)
+                    {
+                        System.out.println("Incorrect input type! Please re-create with correct type.");
+                        break;
+                    }
+                    
                     warehouseController.changeWarehouseItemQuantity(warehouseToEdit, productToEdit, newQuantity);
                     break;
 

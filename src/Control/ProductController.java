@@ -70,7 +70,7 @@ public class ProductController
 		//Print the names of all products stored in the database sorted in decreasing profit percentage
 		System.out.println("\nProducts");
 		System.out.println("--------");
-		System.out.printf("%-22s%-22s%-22s%-22s%-22s%-22s%-22s%-22s%-22s\n","Name","Sell Price","Cost Price", "Quantity", "Units Sold", "Total Sales", "Total Cost", "Total Profit", "Total Profit Percent");
+		System.out.printf("%-22s%-22s%-22s%-22s%-22s%-22s%-22s%-22s%-22s\n","Name","Cost Price","Sell Price", "Quantity", "Units Sold", "Total Sales", "Total Cost", "Total Profit", "Total Profit Percent");
 		List<Product> products = new ArrayList<>(Database.getInstance().getAllProducts().values());
 		Collections.sort(products, new productComparator().reversed());
 		for (Product current: products)
@@ -81,7 +81,7 @@ public class ProductController
 			
 			System.out.printf("%-22s%-22s%-22s%-22s%-22s%-22s%-22s%-22s%-22s\n", (current.getName()), ("$" + current.getCostPrice()), ("$" + current.getSellPrice()), current.getQuantity(), current.getQuantitySold(), 
 					("$" + totalSales), ("$" + totalCost), ("$" + totalProfit), (totalProfit / totalCost) * 100.0);
-			System.out.println("--------\n");
+			System.out.println("--------");
 		}
 	}
 	//COMPARES PROFIT PERCENTAGE (LONG CAUSE WE DONT HAVE PROFIT PERCENTAGE VARIABLE IN PRODUCT)

@@ -136,10 +136,11 @@ public class Warehouse
 			System.out.print("-");
 		}
 		System.out.print("\n");
+		System.out.printf("%-22s%-22s\n","Name","Item Quantity");
 		for (int productIt = 0; productIt < warehouseProducts.size(); ++productIt)
 		{
-			System.out.println(warehouseProducts.get(productIt).getProduct().getName() + " "
-						    + warehouseProducts.get(productIt).getQuantity());
+			System.out.printf("%-22s%-22s\n",warehouseProducts.get(productIt).getProduct().getName(),
+					warehouseProducts.get(productIt).getQuantity());
 		}
 		System.out.print("\n");
 	}

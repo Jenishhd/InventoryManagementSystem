@@ -44,7 +44,7 @@ public class WarehouseController
      };
 
      /*
-      * Displays all current customers in the Boundary.CustomerMenuBoundary database
+      * Displays all current warehouses in the Boundary.WareHouseMenuBoundary database
       */
      public void displayWarehouses()
      {
@@ -64,7 +64,9 @@ public class WarehouseController
           }
           System.out.println("----------");
      }
-
+/**
+ * Displays all warehouses with products
+ */
      public void displayAllWarehousesWithProducts()
      {
           for (String name: Database.getInstance().getAllWarehouses().keySet())
@@ -73,7 +75,9 @@ public class WarehouseController
                current.displayAllProducts();
           }
      }
-
+/**
+ * Displays products in warehouse that has 5 or fewer items in stock
+ */
      public void displayProductsLimitedQuantity()
      {
           for (String name: Database.getInstance().getAllWarehouses().keySet())
@@ -82,7 +86,10 @@ public class WarehouseController
                current.displayLimitedQuantity();
           }
      }
-
+/**
+ * Note: this code seems obsolete
+ * @param p
+ */
      public void addWarehouseProduct(Product p)
      {
           for (String warehouseName: Database.getInstance().getAllWarehouses().keySet())
@@ -91,6 +98,9 @@ public class WarehouseController
                current.addProduct(p);
           }
      }
+     /**
+      * Note: this code seems obsolete
+      */
      public void removeWarehouseItem() {};
      public void changeWarehouseItemQuantity(String warehouseName, String productName, int newQuantity)
      {
@@ -105,7 +115,12 @@ public class WarehouseController
           }
 
      }
-
+     /**
+      * note: this function seems obsolete
+      * @param warehouseName
+      * @param productName
+      * @param shiftInQuantity
+      */
      public void changeQuantityByAmount(String warehouseName, String productName, int shiftInQuantity)
      {
           if (Database.getInstance().getAllWarehouses().containsKey(warehouseName))

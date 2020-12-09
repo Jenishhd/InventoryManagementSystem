@@ -35,7 +35,7 @@ public class InvoiceController
           salesLoop:
           while (!salespersons.containsKey(salesPersonName))
           {
-               System.out.println("**CUSTOMER NOT FOUND**");
+               System.out.println("**SALESPERSON NOT FOUND**");
                selection = "0";
                while (!selection.equals("y") && !selection.equals("n"))
                {
