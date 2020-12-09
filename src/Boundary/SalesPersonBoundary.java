@@ -93,7 +93,7 @@ public class SalesPersonBoundary {
 		System.out.println("SalesPerson: " + sp.getFirstName() + " " +sp.getLastName());
 		System.out.println("Money owed to SalesPerson: "+sp.getPayment());
 		System.out.println("Will you pay this SalesPerson? Y/N");
-		while(!input.equals("y")||!input.equals("n")) {
+		while(!input.equals("y") && !input.equals("n")) {
 			input = scan.nextLine().toLowerCase();
 			if(input.equals("y")) {
 				sp.salesPersonPaid();

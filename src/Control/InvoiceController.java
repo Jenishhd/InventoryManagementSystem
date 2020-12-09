@@ -24,12 +24,52 @@ public class InvoiceController
           HashMap<String, Product> products = Database.getInstance().getAllProducts();
           HashMap<String, Customer> customers = Database.getInstance().getAllCustomers();
           HashMap<String, Warehouse> warehouses = Database.getInstance().getAllWarehouses();
+          HashMap<String, SalesPerson> salespersons = Database.getInstance().getAllSalesPersons();
           boolean buyMore = true;
           String selection = "0";
           boolean validInvoice = true;
 
+          System.out.print("Enter full name of sales person: ");
+          String salesPersonName = input.nextLine();
+
+          salesLoop:
+          while (!salespersons.containsKey(salesPersonName))
+          {
+               System.out.println("**CUSTOMER NOT FOUND**");
+               selection = "0";
+               while (!selection.equals("y") && !selection.equals("n"))
+               {
+                    System.out.print("Would you like to search for another sales person (y/n): ");
+                    selection =  input.nextLine();
+                    if (selection.equals("y"))
+                    {
+                         System.out.print("Enter full name of sales person: ");
+                         salesPersonName = input.nextLine();
+                    }
+                    else if (selection.equals("n"))
+                    {
+                         validInvoice = false;
+                         buyMore = false;
+                         break salesLoop;
+                    }
+                    else
+                    {
+                         System.out.println("**INVALID INPUT TRY AGAIN**");
+                    }
+               }
+          }
+          if (!salespersons.containsKey(salesPersonName))
+          {
+               return;
+          }
+          SalesPerson salesPerson = salespersons.get(salesPersonName);
+
+
+
           System.out.print("Enter full name of customer: ");
           String customerName = input.nextLine();
+
+          customerLoop:
           while (!customers.containsKey(customerName))
           {
                System.out.println("**CUSTOMER NOT FOUND**");
@@ -53,6 +93,10 @@ public class InvoiceController
                          System.out.println("**INVALID INPUT TRY AGAIN**");
                     }
                }
+          }
+          if (!customers.containsKey(customerName))
+          {
+               return;
           }
           Customer purchaseMaker = customers.get(customerName);
 
@@ -184,6 +228,7 @@ public class InvoiceController
           System.out.println("");
           newInvoice.printInvoice();
           Database.getInstance().getAllInvoices().add(newInvoice);
+          salesPerson.addCommission(purchaseMaker, newInvoice.getTotalCost());
 
 
 

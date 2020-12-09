@@ -57,6 +57,8 @@ public class SalesPerson
 		firstName = first;
 		lastName = last;
 		commPercent = percent;
+		commissions = new HashMap<Customer,Double>();
+		commissionsDone = new HashMap<Customer,Double>();
 	}
 	/**
 	 * Method which sets the first name of the SalesPerson
@@ -99,7 +101,12 @@ public class SalesPerson
 	 */
 	public double getTotalSales()
 	{
-		return totalSales;
+		double total=0;
+		for(Customer key: commissionsDone.keySet())
+		{
+			total+= commissionsDone.get(key);
+		}
+		return total;
 	}
 	/**
 	 * Updates the value of totalSales
@@ -163,9 +170,11 @@ public class SalesPerson
 	 */
 	public double getPayment() {
 		double total=0;
-		for(Customer key: commissions.keySet()) {
+		for(Customer key: commissions.keySet())
+		{
 			total+= commissions.get(key);
 		}
+		total = total * (commPercent / 100.0);
 		return total;
 	}
 	/**
@@ -173,7 +182,9 @@ public class SalesPerson
 	 * Data of their total commissions and transactions are still stored within program
 	 * as a safety measure
 	 */
-	public void salesPersonPaid() {
+	public void salesPersonPaid()
+	{
+		totalCommission += getPayment();
 		commissions.clear();
 	}
 	
