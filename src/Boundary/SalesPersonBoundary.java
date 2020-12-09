@@ -21,13 +21,13 @@ public class SalesPersonBoundary {
 	{
 		boolean isNum=false;
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Enter First Name of SalesPerson: ");
+		System.out.print("Enter First Name of SalesPerson: ");
 		String spFirstName = scan.nextLine();
 		
-		System.out.println("Enter Last Name of SalesPerson: ");
+		System.out.print("Enter Last Name of SalesPerson: ");
 		String spLastName = scan.nextLine();
 		
-		System.out.println("Enter SalesPerson's commission percentage\nPlease use numbers and decimals.\nDo not add % sign");
+		System.out.print("Enter SalesPerson's commission percentage: ");
 		double percentage = Double.parseDouble(scan.nextLine());
 //		while(!isNum) {
 //			//pattern and Matcher used here to detect special symbol inputs that are invalid
@@ -67,10 +67,10 @@ public class SalesPersonBoundary {
 	public void removeSalesPerson()
 	{
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Enter First Name of SalesPerson: ");
+		System.out.print("Enter First Name of SalesPerson: ");
 		String spFirstName = scan.nextLine();
 		
-		System.out.println("Enter Last Name of SalesPerson: ");
+		System.out.print("Enter Last Name of SalesPerson: ");
 		String spLastName = scan.nextLine();
 		
 		spController.removeSalesPerson(spFirstName+ " "+ spLastName);
@@ -83,10 +83,10 @@ public class SalesPersonBoundary {
 	public void paySalesPerson() {
 		Scanner scan = new Scanner(System.in);
 		String input ="";
-		System.out.println("Enter First Name of SalesPerson: ");
+		System.out.print("Enter First Name of SalesPerson: ");
 		String spFirstName = scan.nextLine();
 		
-		System.out.println("Enter Last Name of SalesPerson: ");
+		System.out.print("Enter Last Name of SalesPerson: ");
 		String spLastName = scan.nextLine();
 		
 		SalesPerson sp = spController.getSalesPerson(spFirstName + " "+ spLastName);
@@ -95,15 +95,15 @@ public class SalesPersonBoundary {
 			return;
 		}
 		System.out.println("SalesPerson: " + sp.getFirstName() + " " +sp.getLastName());
-		System.out.println("Money owed to SalesPerson: "+sp.getPayment());
-		System.out.println("Will you pay this SalesPerson? Y/N");
+		System.out.printf("Money Owed To Salesperson = $%.2f\n", sp.getPayment());
+		System.out.print("Will you pay this SalesPerson? (y/n): ");
 		while(!input.equals("y") && !input.equals("n")) {
 			input = scan.nextLine().toLowerCase();
 			if(input.equals("y")) {
 				sp.salesPersonPaid();
 				System.out.println("SalesPerson has been paid.");
 			}
-			else if(!input.equals("n")||!input.equals("y")) {
+			else if(!input.equals("n")&& !input.equals("y")) {
 				System.out.println("Invalid Input. Please choose y or n");
 			}
 		}
