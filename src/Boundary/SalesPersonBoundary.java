@@ -27,7 +27,7 @@ public class SalesPersonBoundary {
 		System.out.print("Enter Last Name of SalesPerson: ");
 		String spLastName = scan.nextLine();
 		
-		System.out.print("Enter SalesPerson's commission percentage: ");
+		System.out.print("Enter SalesPerson's commission percentage: %");
 		double percentage = Double.parseDouble(scan.nextLine());
 //		while(!isNum) {
 //			//pattern and Matcher used here to detect special symbol inputs that are invalid
