@@ -24,11 +24,11 @@ public class ProductController
 		try 
 		{ 
 			//Takes product cost price as input
-			System.out.print("Cost to produce: ");
+			System.out.print("Cost to produce: $");
 			temp.setCostPrice(Double.parseDouble(input.nextLine())); 
 			
 			//Takes product sell price as input
-			System.out.print("Price to sell: ");
+			System.out.print("Price to sell: $");
 			temp.setSellPrice(Double.parseDouble(input.nextLine()));
 			}
 		///...then
