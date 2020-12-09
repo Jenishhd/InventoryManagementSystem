@@ -215,7 +215,7 @@ public class Invoice
 		if (daysBetween(dateCreated.getTime(), Calendar.getInstance().getTime()) < NUM_DAYS_DISCOUNT)
 		{
 			remainingCost -= paymentAmount;
-			if (remainingCost <= lowerDiscountThresh)
+			if (remainingCost <= lowerDiscountThresh + .01)
 			{
 				remainingCost = 0;
 				isOpen = false;
@@ -229,7 +229,7 @@ public class Invoice
 				applyCharge();
 			}
 			remainingCost -= paymentAmount;
-			if (remainingCost < 0)
+			if (remainingCost <= .01)
 			{
 				remainingCost = 0;
 				isOpen = false;
@@ -304,23 +304,25 @@ public class Invoice
 			{
 				System.out.print(" ");
 			}
-			System.out.print(itemPrice);
+			System.out.printf("$%.2f",itemPrice);
 			subtotal += itemPrice;
 			System.out.println("");
 		}
 		System.out.println("");
 		double tax = subtotal * debtor.getSalesTaxRate();
-		System.out.println("Subtotal: " + subtotal);
-		System.out.println("Tax: $" + tax);
+		System.out.printf("Subtotal: $%.2f\n", subtotal);
+		System.out.printf("Tax: $%.2f\n", tax);
 		total = subtotal + tax;
 		if (isDelivered)
 		{
-			System.out.println("Delivery Fee: " + deliveryCharge);
+			System.out.printf("Delivery Fee: $%.2f\n", deliveryCharge);
 			total += deliveryCharge;
 		}
 		System.out.printf("Total = $%.2f\n",total);
 		System.out.printf("Remaining Balance = $%.2f\n", remainingCost);
-		System.out.printf("Remaining If Paid Within First 10 Days = $%.2f\n", ((remainingCost - deliveryCharge) * .9) + deliveryCharge);
-		System.out.printf("Remaining If Not Paid Within Next 30 Day Period = $%.2f\n", ((remainingCost - deliveryCharge) * 1.02) + deliveryCharge);
+		double discountPrice = (totalCost - deliveryCharge) * .1;
+		double feePrice = (totalCost - deliveryCharge) * .02;
+		System.out.printf("Remaining If Paid Within First 10 Days = $%.2f\n", (remainingCost - deliveryCharge - discountPrice) + deliveryCharge);
+		System.out.printf("Remaining If Not Paid Within Next 30 Day Period = $%.2f\n", (remainingCost - deliveryCharge) + deliveryCharge + feePrice);
 	}
 }

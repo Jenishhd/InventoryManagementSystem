@@ -29,7 +29,7 @@ public class CreateCustomerBoundary
 
         try
         {
-            System.out.print("Enter the tax rate (percentage) applied to the customer: ");
+            System.out.print("Enter the tax rate (percentage) applied to the customer: %");
             cTaxRate = scnr.nextDouble();
             scnr.nextLine();
         }

@@ -114,7 +114,7 @@ public class InvoiceController
                     isDelivered = true;
                     System.out.print("Enter the address of the customer: ");
                     address = input.nextLine();
-                    System.out.print("Enter delivery fee: ");
+                    System.out.print("Enter delivery fee: $");
                     deliveryFee = Double.parseDouble(input.nextLine());
 
                }
@@ -284,7 +284,7 @@ public class InvoiceController
                                   System.out.print("Enter payment amount: ");
                                   double payment = Double.parseDouble(input.nextLine());
                                   current.makePayment(payment);
-                                  System.out.println("Remaining Invoice Balance: " + current.getRemainingCost());
+                                  System.out.printf("Remaining Invoice Balance: $%.2f", current.getRemainingCost());
                                   break outerLoop;
 
                              case "n":
@@ -311,7 +311,7 @@ public class InvoiceController
           {
                if(current.isOpen() == false) {
                     String fullName = current.getDebtor().getFirstName() + " " + current.getDebtor().getLastName();
-                    System.out.printf("%-40s%-50s%-40s%-40s\n", fullName, current.getAddress(), current.getDateCreated().getTime().toString(), Double.toString(current.getTotalCost()) );
+                    System.out.printf("%-40s%-50s%-40s$%-40.2f\n", fullName, current.getAddress(), current.getDateCreated().getTime().toString(), current.getTotalCost() );
                }
           }
           System.out.println("--------\n");
@@ -337,7 +337,7 @@ public class InvoiceController
           {
                if(current.isOpen() == true) {
                     String fullName = current.getDebtor().getFirstName() + " " + current.getDebtor().getLastName();
-                    System.out.printf("%-40s%-50s%-40s%-40s\n", fullName, current.getAddress(), current.getDateCreated().getTime().toString(), Double.toString(current.getTotalCost()) );
+                    System.out.printf("%-40s%-50s%-40s$%-40.2f\n", fullName, current.getAddress(), current.getDateCreated().getTime().toString(), current.getTotalCost() );
                }
           }
           System.out.println("--------\n");
