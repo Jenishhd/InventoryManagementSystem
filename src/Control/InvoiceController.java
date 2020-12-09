@@ -87,6 +87,7 @@ public class InvoiceController
                     {
                          validInvoice = false;
                          buyMore = false;
+                         break customerLoop;
                     }
                     else
                     {
@@ -102,6 +103,7 @@ public class InvoiceController
 
           selection = "0";
           boolean isDelivered = true;
+          double deliveryFee = 0;
           while (!selection.equals("y") && !selection.equals("n"))
           {
                System.out.print("Is this purchase to be delivered?(y/n): ");
@@ -109,6 +111,9 @@ public class InvoiceController
                if (selection.equals("y"))
                {
                     isDelivered = true;
+                    System.out.print("Enter delivery fee: ");
+                    deliveryFee = Double.parseDouble(input.nextLine());
+
                }
                else if (selection.equals("n"))
                {
@@ -119,7 +124,7 @@ public class InvoiceController
                     System.out.println("**INVALID INPUT TRY AGAIN**");
                }
           }
-          Invoice newInvoice = new Invoice(purchaseMaker, isDelivered);
+          Invoice newInvoice = new Invoice(purchaseMaker, isDelivered, deliveryFee);
 
 
           outerLoop:
@@ -228,7 +233,7 @@ public class InvoiceController
           System.out.println("");
           newInvoice.printInvoice();
           Database.getInstance().getAllInvoices().add(newInvoice);
-          salesPerson.addCommission(purchaseMaker, newInvoice.getTotalCost());
+          salesPerson.addCommission(purchaseMaker, newInvoice.getTotalCost() - deliveryFee);
 
 
 

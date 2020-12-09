@@ -90,6 +90,10 @@ public class SalesPersonBoundary {
 		String spLastName = scan.nextLine();
 		
 		SalesPerson sp = spController.getSalesPerson(spFirstName + " "+ spLastName);
+		if (sp == null)
+		{
+			return;
+		}
 		System.out.println("SalesPerson: " + sp.getFirstName() + " " +sp.getLastName());
 		System.out.println("Money owed to SalesPerson: "+sp.getPayment());
 		System.out.println("Will you pay this SalesPerson? Y/N");

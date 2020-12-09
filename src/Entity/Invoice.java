@@ -22,6 +22,11 @@ public class Invoice
 	private boolean isDelivered;
 
 	/**
+	 * Amount to charge for deliver
+	 */
+	private double deliveryCharge;
+
+	/**
 	* Total price on invoice before payment
 	*/
 	private double totalCost;
@@ -70,13 +75,14 @@ public class Invoice
 		remainingCost = 0;
 		debtor = new Customer();
 		purchases = new HashMap<Product, Integer>();
+		deliveryCharge = 0;
 	}
 
 	/**
 	* Specific Constructor - Only specifies debtor and isdelivered because all
 	*					other data members should have default initial values
 	*/
-	public Invoice(Customer newDebtor, boolean newDelivered)
+	public Invoice(Customer newDebtor, boolean newDelivered, double newDeliveryCharge)
 	{
 		//Set all specified values
 		debtor = newDebtor;
@@ -99,10 +105,12 @@ public class Invoice
 		purchases = new HashMap<Product, Integer>();
 		totalCost = 0;
 		remainingCost = 0;
+		deliveryCharge = 0;
 		if (isDelivered)
 		{
-			totalCost += 10;
-			remainingCost += 10;
+			deliveryCharge += newDeliveryCharge;
+			totalCost += newDeliveryCharge;
+			remainingCost += newDeliveryCharge;
 		}
 
 	}
@@ -296,8 +304,8 @@ public class Invoice
 		total = subtotal + tax;
 		if (isDelivered)
 		{
-			System.out.println("Delivery Fee: $10");
-			total += 10;
+			System.out.println("Delivery Fee: " + deliveryCharge);
+			total += deliveryCharge;
 		}
 		System.out.printf("Total = $%.2f\n",total);
 	}
