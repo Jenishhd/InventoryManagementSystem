@@ -188,8 +188,15 @@ public class Product
 	 */
 	public void calcTotalProfitPercent()
 	{
-		totalProfitPercent = (totalProfit / getTotalCost());
+		totalProfitPercent = (((sellPrice / costPrice) * 100)) - 100;
 	}
+
+	public double getTotalProfitPercent()
+	{
+		calcTotalProfitPercent();
+		return totalProfitPercent;
+	}
+
 
 	/**
 	 *

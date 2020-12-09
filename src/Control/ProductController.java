@@ -79,8 +79,8 @@ public class ProductController
 			double totalCost = current.getQuantitySold() * current.getCostPrice();
 			double totalProfit = totalSales - totalCost;
 			
-			System.out.printf("%-22s$%-21.2f$%-21.2f%-22s%-22s$%-21.2f$%-21.2f$%-21.2f%-21.2f\n", (current.getName()), current.getCostPrice(), current.getSellPrice(), current.getQuantity(), current.getQuantitySold(),
-					totalSales, totalCost, totalProfit, (totalProfit / totalCost) * 100.0);
+			System.out.printf("%-22s$%-21.2f$%-21.2f%-22s%-22s$%-21.2f$%-21.2f$%-21.2f%%%-21.2f\n", (current.getName()), current.getCostPrice(), current.getSellPrice(), current.getQuantity(), current.getQuantitySold(),
+					totalSales, totalCost, totalProfit, current.getTotalProfitPercent());
 			System.out.println("--------");
 		}
 	}
@@ -88,8 +88,9 @@ public class ProductController
 	public class productComparator implements Comparator<Product> {
 		@Override
 		public int compare(Product p1, Product p2) {
-			return Double.compare( (100*(p1.getQuantitySold()*p1.getSellPrice())/(p1.getQuantitySold() * p1.getCostPrice())),
-									(100*(p2.getQuantitySold()*p2.getSellPrice())/(p2.getQuantitySold() * p2.getCostPrice())));
+			//return Double.compare( (100*(p1.getQuantitySold()*p1.getSellPrice())/(p1.getQuantitySold() * p1.getCostPrice())),
+			//						(100*(p2.getQuantitySold()*p2.getSellPrice())/(p2.getQuantitySold() * p2.getCostPrice())));
+			return Double.compare(p1.getTotalProfitPercent(), p2.getTotalProfitPercent());
 		}
 	}
 
