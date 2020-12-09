@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="CECS 343 Project:jar">
+  <artifact type="jar" name="CECS_343_Project:jar">
     <output-path>$PROJECT_DIR$/classes/artifacts/CECS_343_Project_jar</output-path>
     <root id="archive" name="CECS 343 Project.jar">
       <element id="module-output" name="CECS 343 Project" />
