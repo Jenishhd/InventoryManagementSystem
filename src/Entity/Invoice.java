@@ -54,6 +54,17 @@ public class Invoice
 	 * Address for the invoice
 	 */
 	private String address;
+
+
+	/**
+	 * *
+	 *
+	 */
+	private int lateCounter;
+
+	private int chargesApplied;
+
+
 	/*
 	 * Default Constructor
 	 */
@@ -76,6 +87,7 @@ public class Invoice
 		debtor = new Customer();
 		purchases = new HashMap<Product, Integer>();
 		deliveryCharge = 0;
+		lateCounter = 0;
 	}
 
 	/**
@@ -113,7 +125,7 @@ public class Invoice
 			remainingCost += newDeliveryCharge;
 		}
 		address = newAddress;
-
+		lateCounter = 0;
 	}
 
 	/**
@@ -198,7 +210,7 @@ public class Invoice
 	public void makePayment(double paymentAmount)
 	{
 		final int NUM_DAYS_DISCOUNT = 10;
-		double lowerDiscountThresh = totalCost * .1;
+		double lowerDiscountThresh = (totalCost - deliveryCharge) * .1;
 
 		if (daysBetween(dateCreated.getTime(), Calendar.getInstance().getTime()) < NUM_DAYS_DISCOUNT)
 		{
@@ -211,6 +223,11 @@ public class Invoice
 		}
 		else
 		{
+			lateCounter = daysBetween(dateCreated.getTime(), Calendar.getInstance().getTime()) / 30;
+			for (int chargeCounter = chargesApplied; chargeCounter < lateCounter; ++chargeCounter)
+			{
+				applyCharge();
+			}
 			remainingCost -= paymentAmount;
 			if (remainingCost < 0)
 			{
@@ -225,19 +242,12 @@ public class Invoice
 	*/
 	public void applyCharge()
 	{
-		final int NUM_DAYS_FEE = 30;
-		final double lateFee = totalCost * .02;
-		if (isOpen)
+		remainingCost = 1.02 * (remainingCost - deliveryCharge);
+		if (remainingCost <= 0)
 		{
-			if (!hasCharged)
-			{
-				if (daysBetween(dateCreated.getTime(), Calendar.getInstance().getTime()) > NUM_DAYS_FEE)
-				{
-					remainingCost += lateFee;
-					hasCharged = true;
-				}
-			}
+			remainingCost = 0;
 		}
+		++chargesApplied;
 	}
 
 	/**
@@ -309,5 +319,8 @@ public class Invoice
 			total += deliveryCharge;
 		}
 		System.out.printf("Total = $%.2f\n",total);
+		System.out.printf("Remaining Balance = $%.2f\n", remainingCost);
+		System.out.printf("Remaining If Paid Within First 10 Days = $%.2f\n", ((remainingCost - deliveryCharge) * .9) + deliveryCharge);
+		System.out.printf("Remaining If Not Paid Within Next 30 Day Period = $%.2f\n", ((remainingCost - deliveryCharge) * 1.02) + deliveryCharge);
 	}
 }
