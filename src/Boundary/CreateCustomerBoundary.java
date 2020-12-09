@@ -20,16 +20,16 @@ public class CreateCustomerBoundary
     {
         double cTaxRate = 0;
         CustomerController cController = new CustomerController();
-        System.out.println("Enter the first name of the customer: ");
+        System.out.print("Enter the first name of the customer: ");
         String cFirstName = scnr.nextLine();
 
-        System.out.println("Enter the last name of the customer: ");
+        System.out.print("Enter the last name of the customer: ");
         String cLastName = scnr.nextLine();
 
 
         try
         {
-            System.out.println("Enter the tax rate (percentage) applied to the customer: ");
+            System.out.print("Enter the tax rate (percentage) applied to the customer: ");
             cTaxRate = scnr.nextDouble();
             scnr.nextLine();
         }

@@ -53,6 +53,7 @@ public class MainMenuBoundary
 	{
 		System.out.println("\nPlease make a selection:");
 		System.out.println("1) Items and Products\n2) Customers\n3) Invoices\n4) Warehouses\n5) SalesPerson\n6) Exit");
+		System.out.print("Choice: ");
 
 		//Switch for menu selection. All cases that return true will reprint the menu choices. All cases that return false will not
 		switch(input.nextLine())

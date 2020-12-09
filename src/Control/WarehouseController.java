@@ -134,6 +134,15 @@ public class WarehouseController
           }
      }
 
+     public Warehouse getWarehouse(String warehouseName)
+     {
+          if (Database.getInstance().getAllWarehouses().containsKey(warehouseName))
+          {
+               return Database.getInstance().getAllWarehouses().get(warehouseName);
+          }
+          return null;
+     }
+
 
 
 }

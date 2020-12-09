@@ -19,6 +19,7 @@ public class SalesPersonMenuBoundary {
 		{
 			System.out.println("\nPlease make a selection:");
 	 		System.out.println("1) Add SalesPerson\n2) Remove SalesPerson\n3) Show all Salesmen\n4) Pay SalesPerson\n5) Exit");
+	 		System.out.print("Choice: ");
 	        selection = scan.nextLine();
 			switch(selection) {
 			case "1":
