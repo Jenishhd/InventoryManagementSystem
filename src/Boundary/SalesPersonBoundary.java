@@ -58,7 +58,7 @@ public class SalesPersonBoundary {
 //		}
 		SalesPerson sp = new SalesPerson(spFirstName,spLastName, percentage);
 		spController.addSalesPerson(sp);
-		System.out.println("The customer " + spFirstName + " " + spLastName + " was added to the database.");
+		System.out.println("The salesperson " + spFirstName + " " + spLastName + " was added to the database.");
 		
 	}
 	/**
