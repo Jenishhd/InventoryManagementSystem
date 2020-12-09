@@ -240,11 +240,11 @@ public class InvoiceController
     {
 		System.out.println("\nInvoices");
 		System.out.println("--------");
-		System.out.printf("%-40s%-40s%-40s\n", "Debtor Name","Address", "Date Created");
+		System.out.printf("%-40s%-50s%-40s\n", "Debtor Name","Address", "Date Created");
 		for(Invoice current: Database.getInstance().getAllInvoices())
         {
              String fullName = current.getDebtor().getFirstName() + " " + current.getDebtor().getLastName();
-             System.out.printf("%-40s%-40s%-40s\n", fullName, current.getAddress(),current.getDateCreated().getTime().toString());
+             System.out.printf("%-40s%-50s%-40s\n", fullName, current.getDebtor().getAddress(),current.getDateCreated().getTime().toString());
         }
 		System.out.println("--------\n");
     }
@@ -298,12 +298,12 @@ public class InvoiceController
 
           System.out.println("\nClosed Invoices");
           System.out.println("--------------------");
-          System.out.printf("%-40s%-40s%-40s%-40s\n", "Debtor Name","Address", "Date Created", "Invoice Amount");
+          System.out.printf("%-40s%-50s%-40s%-40s\n", "Debtor Name","Address", "Date Created", "Invoice Amount");
           for(Invoice current: invoices)
           {
                if(current.isOpen() == false) {
                     String fullName = current.getDebtor().getFirstName() + " " + current.getDebtor().getLastName();
-                    System.out.printf("%-40s%-40s%-40s%-40s\n", fullName, current.getAddress(), current.getDateCreated().getTime().toString(), Double.toString(current.getTotalCost()) );
+                    System.out.printf("%-40s%-50s%-40s%-40s\n", fullName, current.getDebtor().getAddress(), current.getDateCreated().getTime().toString(), Double.toString(current.getTotalCost()) );
                }
           }
           System.out.println("--------\n");
@@ -324,12 +324,12 @@ public class InvoiceController
 
           System.out.println("\nOpen Invoices");
           System.out.println("--------------------");
-          System.out.printf("%-40s%-40s%-40s%-40s\n", "Debtor Name","Address", "Date Created", "Invoice Amount");
+          System.out.printf("%-40s%-50s%-40s%-40s\n", "Debtor Name","Address", "Date Created", "Invoice Amount");
           for(Invoice current: invoices)
           {
                if(current.isOpen() == true) {
                     String fullName = current.getDebtor().getFirstName() + " " + current.getDebtor().getLastName();
-                    System.out.printf("%-40s%-40s%-40s%-40s\n", fullName, current.getAddress(), current.getDateCreated().getTime().toString(), Double.toString(current.getTotalCost()) );
+                    System.out.printf("%-40s%-50s%-40s%-40s\n", fullName, current.getDebtor().getAddress(), current.getDateCreated().getTime().toString(), Double.toString(current.getTotalCost()) );
                }
           }
           System.out.println("--------\n");

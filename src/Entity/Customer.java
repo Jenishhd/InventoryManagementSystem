@@ -19,6 +19,11 @@ public class Customer
 	private String lastName;
 
 	/**
+	 * Address of customer
+	 */
+	private String address;
+
+	/**
 	* ID number for customer
 	*/
 	private String ID;
@@ -36,7 +41,8 @@ public class Customer
 	{
 		firstName = "";
 		lastName = "";
-		salesTaxRate = .8;
+		address = "";
+		salesTaxRate = .08;
 		ID = UUID.randomUUID().toString();
 	}
 
@@ -47,11 +53,13 @@ public class Customer
 	* @param newLastName Initial last name for customer
 	* @param newSalesTaxRate Initial sales tax rate for customer
 	*/
-	public Customer(String newFirstName, String newLastName, double newSalesTaxRate)
+	public Customer(String newFirstName, String newLastName, String newAddress, double newSalesTaxRate)
 	{
 		firstName = newFirstName;
 		lastName = newLastName;
+		address = newAddress;
 		salesTaxRate = newSalesTaxRate;
+		ID = UUID.randomUUID().toString();
 	}
 
 	/**
@@ -72,6 +80,16 @@ public class Customer
 	public String getLastName()
 	{
 		return lastName;
+	}
+
+	/**
+	 * Gets Address of Customer
+	 *
+	 * @return Address of customer
+	 */
+	public String getAddress()
+	{
+		return address;
 	}
 
 	/**
@@ -102,6 +120,14 @@ public class Customer
 	public void setLastName(String newLastName)
 	{
 		lastName = newLastName;
+	}
+
+	/**
+	 * Sets Address of Customer
+	 */
+	public void setAddress(String newAddress)
+	{
+		address = newAddress;
 	}
 
 	/**
