@@ -104,6 +104,7 @@ public class InvoiceController
           selection = "0";
           boolean isDelivered = true;
           double deliveryFee = 0;
+          String address = "Not Applicable";
           while (!selection.equals("y") && !selection.equals("n"))
           {
                System.out.print("Is this purchase to be delivered?(y/n): ");
@@ -111,6 +112,8 @@ public class InvoiceController
                if (selection.equals("y"))
                {
                     isDelivered = true;
+                    System.out.print("Enter the address of the customer: ");
+                    address = input.nextLine();
                     System.out.print("Enter delivery fee: ");
                     deliveryFee = Double.parseDouble(input.nextLine());
 
@@ -124,7 +127,7 @@ public class InvoiceController
                     System.out.println("**INVALID INPUT TRY AGAIN**");
                }
           }
-          Invoice newInvoice = new Invoice(purchaseMaker, isDelivered, deliveryFee);
+          Invoice newInvoice = new Invoice(purchaseMaker, isDelivered, deliveryFee, address);
 
 
           outerLoop:
@@ -249,7 +252,7 @@ public class InvoiceController
 		for(Invoice current: Database.getInstance().getAllInvoices())
         {
              String fullName = current.getDebtor().getFirstName() + " " + current.getDebtor().getLastName();
-             System.out.printf("%-40s%-50s%-40s\n", fullName, current.getDebtor().getAddress(),current.getDateCreated().getTime().toString());
+             System.out.printf("%-40s%-50s%-40s\n", fullName, current.getAddress(),current.getDateCreated().getTime().toString());
         }
 		System.out.println("--------\n");
     }
@@ -308,7 +311,7 @@ public class InvoiceController
           {
                if(current.isOpen() == false) {
                     String fullName = current.getDebtor().getFirstName() + " " + current.getDebtor().getLastName();
-                    System.out.printf("%-40s%-50s%-40s%-40s\n", fullName, current.getDebtor().getAddress(), current.getDateCreated().getTime().toString(), Double.toString(current.getTotalCost()) );
+                    System.out.printf("%-40s%-50s%-40s%-40s\n", fullName, current.getAddress(), current.getDateCreated().getTime().toString(), Double.toString(current.getTotalCost()) );
                }
           }
           System.out.println("--------\n");
@@ -334,7 +337,7 @@ public class InvoiceController
           {
                if(current.isOpen() == true) {
                     String fullName = current.getDebtor().getFirstName() + " " + current.getDebtor().getLastName();
-                    System.out.printf("%-40s%-50s%-40s%-40s\n", fullName, current.getDebtor().getAddress(), current.getDateCreated().getTime().toString(), Double.toString(current.getTotalCost()) );
+                    System.out.printf("%-40s%-50s%-40s%-40s\n", fullName, current.getAddress(), current.getDateCreated().getTime().toString(), Double.toString(current.getTotalCost()) );
                }
           }
           System.out.println("--------\n");

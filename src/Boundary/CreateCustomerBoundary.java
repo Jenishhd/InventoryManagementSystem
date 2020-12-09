@@ -26,8 +26,6 @@ public class CreateCustomerBoundary
         System.out.println("Enter the last name of the customer: ");
         String cLastName = scnr.nextLine();
 
-        System.out.println("Enter the address of the customer: ");
-        String cAddress = scnr.nextLine();
 
         try
         {
@@ -41,7 +39,7 @@ public class CreateCustomerBoundary
             return;
         }
 
-        Customer customer = new Customer(cFirstName,cLastName, cAddress, cTaxRate / 100.0);
+        Customer customer = new Customer(cFirstName,cLastName, cTaxRate / 100.0);
         cController.addCustomer(customer);
 
         System.out.println("The customer " + cFirstName + " " + cLastName + " was added to the database.");

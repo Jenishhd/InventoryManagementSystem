@@ -18,10 +18,10 @@ public class Customer
 	*/
 	private String lastName;
 
-	/**
-	 * Address of customer
-	 */
-	private String address;
+//	/**
+//	 * Address of customer
+//	 */
+//	private String address;
 
 	/**
 	* ID number for customer
@@ -41,7 +41,7 @@ public class Customer
 	{
 		firstName = "";
 		lastName = "";
-		address = "";
+		//address = "";
 		salesTaxRate = .08;
 		ID = UUID.randomUUID().toString();
 	}
@@ -53,11 +53,11 @@ public class Customer
 	* @param newLastName Initial last name for customer
 	* @param newSalesTaxRate Initial sales tax rate for customer
 	*/
-	public Customer(String newFirstName, String newLastName, String newAddress, double newSalesTaxRate)
+	public Customer(String newFirstName, String newLastName, double newSalesTaxRate)
 	{
 		firstName = newFirstName;
 		lastName = newLastName;
-		address = newAddress;
+		//address = newAddress;
 		salesTaxRate = newSalesTaxRate;
 		ID = UUID.randomUUID().toString();
 	}
@@ -82,15 +82,15 @@ public class Customer
 		return lastName;
 	}
 
-	/**
-	 * Gets Address of Customer
-	 *
-	 * @return Address of customer
-	 */
-	public String getAddress()
-	{
-		return address;
-	}
+//	/**
+//	 * Gets Address of Customer
+//	 *
+//	 * @return Address of customer
+//	 */
+//	public String getAddress()
+//	{
+//		return address;
+//	}
 
 	/**
 	* Gets sales tax rate for the customer
@@ -122,13 +122,13 @@ public class Customer
 		lastName = newLastName;
 	}
 
-	/**
-	 * Sets Address of Customer
-	 */
-	public void setAddress(String newAddress)
-	{
-		address = newAddress;
-	}
+//	/**
+//	 * Sets Address of Customer
+//	 */
+//	public void setAddress(String newAddress)
+//	{
+//		address = newAddress;
+//	}
 
 	/**
 	* Sets the sales tax rate to a new value

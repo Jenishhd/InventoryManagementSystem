@@ -82,7 +82,7 @@ public class Invoice
 	* Specific Constructor - Only specifies debtor and isdelivered because all
 	*					other data members should have default initial values
 	*/
-	public Invoice(Customer newDebtor, boolean newDelivered, double newDeliveryCharge)
+	public Invoice(Customer newDebtor, boolean newDelivered, double newDeliveryCharge, String newAddress)
 	{
 		//Set all specified values
 		debtor = newDebtor;
@@ -112,6 +112,7 @@ public class Invoice
 			totalCost += newDeliveryCharge;
 			remainingCost += newDeliveryCharge;
 		}
+		address = newAddress;
 
 	}
 
