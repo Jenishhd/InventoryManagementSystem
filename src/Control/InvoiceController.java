@@ -11,7 +11,6 @@ import java.util.*;
 
 public class InvoiceController
 {
-     private Object UserComparator;
 
      /*
 	 * Adds a new customer to the Boundary.CustomerMenuBoundary database
@@ -245,11 +244,12 @@ public class InvoiceController
          }
 
     }
-     //RFP DISPLAY METHOD
+    
+     //RFP DISPLAY METHOD FOR CLOSED INVOICES SORTED BY TOTAL AMOUNT
      public void displayClosedInvoices()
      {
           List<Invoice> invoices = new ArrayList(Database.getInstance().getAllInvoices());
-          invoices.sort((Comparator<? super Invoice>) UserComparator);
+          Collections.sort(invoices, new UserComparator().reversed());
 
           System.out.println("\nClosed Invoices");
           System.out.println("--------------------");
@@ -268,6 +268,32 @@ public class InvoiceController
           @Override
           public int compare(Invoice i1, Invoice i2) {
                return Double.compare(i1.getTotalCost(),i2.getTotalCost());
+          }
+     }
+
+     //OPEN INVOICES SORTED BY DATE
+     public void displayOpenInvoices()
+     {
+          List<Invoice> invoices = new ArrayList(Database.getInstance().getAllInvoices());
+          Collections.sort(invoices, new oComparator());
+
+          System.out.println("\nOpen Invoices");
+          System.out.println("--------------------");
+          System.out.printf("%-40s%-40s%-40s%-40s\n", "Debtor Name","Address", "Date Created", "Invoice Amount");
+          for(Invoice current: invoices)
+          {
+               if(current.isOpen() == true) {
+                    String fullName = current.getDebtor().getFirstName() + " " + current.getDebtor().getLastName();
+                    System.out.printf("%-40s%-40s%-40s%-40s\n", fullName, current.getAddress(), current.getDateCreated().getTime().toString(), Double.toString(current.getTotalCost()) );
+               }
+          }
+          System.out.println("--------\n");
+     }
+
+     public class oComparator implements Comparator<Invoice> {
+          @Override
+          public int compare(Invoice i1, Invoice i2) {
+               return i1.getDateCreated().compareTo(i2.getDateCreated());
           }
      }
 

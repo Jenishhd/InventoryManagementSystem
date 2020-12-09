@@ -26,10 +26,10 @@ public class InvoiceMenuBoundary
 	{
           Scanner input = new Scanner(System.in);
           String selection = "0";
-          while (!selection.equals("5"))
+          while (!selection.equals("6"))
           {
         	  	System.out.println("\nPlease make a selection:");
-          		System.out.println("1) Add Invoice\n2) Make payment\n3) Show all invoices\n4) Show closed invoices\n5) Exit");
+          		System.out.println("1) Add Invoice\n2) Make payment\n3) Show all invoices\n4) Show closed invoices\n5) Show Open Invoices\n6) Exit");
 
           		selection = input.nextLine();
           		//Switch for menu selection. All cases that return true will reprint the menu choices. All cases that return false will not
@@ -52,8 +52,11 @@ public class InvoiceMenuBoundary
           		case "4":
 					invoiceController.displayClosedInvoices();
           			break;
+				case "5":
+					invoiceController.displayOpenInvoices();
+					break;
           			//Exit
-          		case "5":
+          		case "6":
           			break;
 
 
