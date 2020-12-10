@@ -33,14 +33,14 @@ public class WarehouseMenuBoundary
      {
           Scanner input = new Scanner(System.in);
           String selection = "0";
-          while (!selection.equals("8"))
+          while (!selection.equals("7"))
           {
                System.out.println("\nPlease make a selection:");
                System.out.println("1) Add Warehouse\n2) Remove Warehouse\n" +
                                   "3) Show all warehouses\n4) Display All Products With Quantity \n" +
                                   "5) Display All Products With Quantity of 5 or Less\n" +
                                   "6) Add/Edit quantity of an item to Warehouse\n" +
-                                  "7) Remove item supply in warehouse\n8) Exit");
+                                  "7) Exit");
                System.out.print("Choice: ");
                selection = input.nextLine();
                //Switch for menu selection. All cases that return true will reprint the menu choices. All cases that return false will not
@@ -156,14 +156,7 @@ public class WarehouseMenuBoundary
                     }
 
                     break;
-
-               //Removes a certain amount of an item form the warehouse. Item must exist in the warehouse already, and resulting item quantity cannot be <0
                case "7":
-                    ///Asks user for number to remove
-                    //warehouseController.changeWarehouseItemQuantity(/*negative int*/);
-                    break;
-               //Exit
-               case "8":
                     break;
                default:
                     System.out.println("Invalid selection. Please try again.");
